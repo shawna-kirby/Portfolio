@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credit Card Payment — Shawna Kirby</title>
+  <meta name="description" content="[One-sentence description of this case study.]" />
+  <link rel="icon" type="image/png" href="../assets/img/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/img/icon.png" alt="" class="nav-logo-mark" />
+        Shawna Kirby
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../work.html" aria-current="page">Portfolio</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="lock-gate" data-protected data-checking>
+    <div class="container-prose">
+      <span class="eyebrow">Password protected</span>
+      <h1>Enter the password to view my work</h1>
+      <p>
+        Case studies are shared by request.
+        <a href="mailto:shawna@shawnakirby.com?subject=Portfolio%20password">Request access</a>
+      </p>
+      <form class="lock-form">
+        <label for="lock-password" class="eyebrow">Password</label>
+        <div class="lock-row">
+          <input id="lock-password" type="password" autocomplete="current-password" required />
+          <button type="submit" class="btn btn-primary">Unlock</button>
+        </div>
+        <p class="lock-error" role="alert" hidden>That password didn&rsquo;t work. Try again.</p>
+      </form>
+      <noscript>
+        <style>.lock-gate[data-checking] { visibility: visible; }</style>
+        <p>JavaScript is needed to unlock this page.</p>
+      </noscript>
+    </div>
+  </main>
+
+  <script type="application/json" id="protected-payload">{"salt": "XleaKC/k2l27kzVbtzmRrQ==", "iterations": 310000, "iv": "en+j4mwgCVb+tNEZ3Ljmvg==", "ciphertext": "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", "mac": "ubxrxVHWBqMlN69Exyck9YEcvCU8/F3G5nz4W325RLQ="}</script>
+  <script src="../assets/js/unlock.js"></script>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html" class="footer-col-label">Shawna Kirby</a>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <ul class="footer-links">
+            <li><a href="mailto:shawna@shawnakirby.com">shawna@shawnakirby.com</a></li>
+            <li><a href="tel:+14153086495">415.308.6495</a></li>
+            <li><a href="../ShawnaKirby_Resume_2026.pdf" download="Shawna-Kirby-Résumé.pdf">Résumé</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <ul class="footer-links">
+            <li><a href="../work.html">Portfolio</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

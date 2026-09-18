@@ -23,7 +23,6 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
         <li><a href="../work.html" aria-current="page">Portfolio</a></li>
         <li><a href="../about.html">About</a></li>
         <li><a href="../contact.html">Contact</a></li>
@@ -31,76 +30,35 @@
     </div>
   </nav>
 
-  <header class="page-hero">
+  <main class="lock-gate" data-protected data-checking>
     <div class="container-prose">
-      <a href="../work.html" class="back-link">← Back to portfolio</a>
-      <div class="work-row-meta" style="margin-bottom: 20px;">[Tag, e.g. 0→1] · [Tag, e.g. Enterprise SaaS] · [Tag, e.g. Team Leadership]</div>
-      <h1>Multi-bill Ingest</h1>
-      <p>[A one- or two-sentence summary of the problem and the outcome — this is the hook.]</p>
+      <span class="eyebrow">Password protected</span>
+      <h1>Enter the password to view my work</h1>
+      <p>
+        Case studies are shared by request.
+        <a href="mailto:shawna@shawnakirby.com?subject=Portfolio%20password">Request access</a>
+      </p>
+      <form class="lock-form">
+        <label for="lock-password" class="eyebrow">Password</label>
+        <div class="lock-row">
+          <input id="lock-password" type="password" autocomplete="current-password" required />
+          <button type="submit" class="btn btn-primary">Unlock</button>
+        </div>
+        <p class="lock-error" role="alert" hidden>That password didn&rsquo;t work. Try again.</p>
+      </form>
+      <noscript>
+        <style>.lock-gate[data-checking] { visibility: visible; }</style>
+        <p>JavaScript is needed to unlock this page.</p>
+      </noscript>
     </div>
-  </header>
+  </main>
 
-  <section style="padding-top: 48px;">
-    <div class="container-prose">
-      <div class="placeholder-note" style="margin-bottom: 8px;">
-        <span class="eyebrow">Placeholder page</span> — replace every bracketed section below with the real
-        case study content for this project.
-      </div>
-
-      <div class="case-study-body">
-
-        <div class="case-study-section" style="border-top: none;">
-          <span class="eyebrow">Role &amp; Context</span>
-          <h2>[Your role, the team, and the timeframe]</h2>
-          <p>[Were you the sole designer, a lead, an IC on a larger team? What was the business context — company stage, product area, constraints?]</p>
-        </div>
-
-        <div class="case-study-section">
-          <span class="eyebrow">The Problem</span>
-          <h2>[What wasn't working, and for whom]</h2>
-          <p>[Describe the user or business problem. What was the evidence — research, metrics, complaints — that this needed solving?]</p>
-        </div>
-
-        <div class="case-study-section">
-          <span class="eyebrow">The Approach</span>
-          <h2>[How you and your team worked through it]</h2>
-          <p>[Process, research methods, key decisions, collaboration with product/eng/stakeholders. This is a good place for process diagrams, sketches, or flow images.]</p>
-        </div>
-
-        <div class="case-study-section">
-          <span class="eyebrow">The Solution</span>
-          <h2>[What you shipped]</h2>
-          <p>[Describe the final design. This is the place for full-size screenshots, prototypes, or a walkthrough of the key screens.]</p>
-        </div>
-
-        <div class="case-study-section">
-          <span class="eyebrow">The Impact</span>
-          <h2>[Results and what changed]</h2>
-          <p>[Metrics if you have them, qualitative outcomes if you don't — adoption, satisfaction, team growth, business impact.]</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <script type="application/json" id="protected-payload">{"salt": "XleaKC/k2l27kzVbtzmRrQ==", "iterations": 310000, "iv": "fobj5OR6+B3GKVsff3syWg==", "ciphertext": "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", "mac": "2gZPWBxgAVttxeRD7Nek91qW93P1pngR/c3DF+xE69w="}</script>
+  <script src="../assets/js/unlock.js"></script>
 
   <footer class="site-footer">
     <div class="container">
-      <span class="footer-col-label">
-        <svg class="footer-logo-mark" viewBox="0 0 24 24" aria-hidden="true">
-          <g fill="#ffffff">
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(0 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(45 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(90 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(135 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(180 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(225 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(270 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(315 12 12)" />
-          </g>
-          <circle cx="12" cy="12" r="3.6" fill="#000000" />
-        </svg>
-        Shawna Kirby
-      </span>
+      <a href="../index.html" class="footer-col-label">Shawna Kirby</a>
       <div class="footer-grid">
         <div class="footer-col">
           <ul class="footer-links">
@@ -111,7 +69,6 @@
         </div>
         <div class="footer-col">
           <ul class="footer-links">
-            <li><a href="../index.html">Home</a></li>
             <li><a href="../work.html">Portfolio</a></li>
             <li><a href="../about.html">About</a></li>
             <li><a href="../contact.html">Contact</a></li>

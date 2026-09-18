@@ -23,7 +23,6 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
         <li><a href="work.html" aria-current="page">Portfolio</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -31,95 +30,35 @@
     </div>
   </nav>
 
-  <section style="margin-top: 0; padding-top: 50px;">
-    <div class="container">
-      <div class="work-grid">
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 01</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 02</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 03</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 04</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 05</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 06</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 07</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 08</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-        <a href="work/case-study-template.html" class="work-card">
-          <div class="work-card-media">Case Study 09</div>
-          <h3>[Project Name]</h3>
-          <p>[One or two sentences on the problem and the impact of your work.]</p>
-          <span class="link-arrow">View more</span>
-        </a>
-
-      </div>
+  <main class="lock-gate" data-protected data-checking>
+    <div class="container-prose">
+      <span class="eyebrow">Password protected</span>
+      <h1>Enter the password to view my work</h1>
+      <p>
+        Case studies are shared by request.
+        <a href="mailto:shawna@shawnakirby.com?subject=Portfolio%20password">Request access</a>
+      </p>
+      <form class="lock-form">
+        <label for="lock-password" class="eyebrow">Password</label>
+        <div class="lock-row">
+          <input id="lock-password" type="password" autocomplete="current-password" required />
+          <button type="submit" class="btn btn-primary">Unlock</button>
+        </div>
+        <p class="lock-error" role="alert" hidden>That password didn&rsquo;t work. Try again.</p>
+      </form>
+      <noscript>
+        <style>.lock-gate[data-checking] { visibility: visible; }</style>
+        <p>JavaScript is needed to unlock this page.</p>
+      </noscript>
     </div>
-  </section>
+  </main>
+
+  <script type="application/json" id="protected-payload">{"salt": "XleaKC/k2l27kzVbtzmRrQ==", "iterations": 310000, "iv": "moijYt5m+rl5qyDd5IcyAA==", "ciphertext": "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", "mac": "JKr07b6tWTne41PjoQS891Hp/1Wqca0Ro880NrqgsCk="}</script>
+  <script src="assets/js/unlock.js"></script>
 
   <footer class="site-footer">
     <div class="container">
-      <span class="footer-col-label">
-        <svg class="footer-logo-mark" viewBox="0 0 24 24" aria-hidden="true">
-          <g fill="#ffffff">
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(0 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(45 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(90 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(135 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(180 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(225 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(270 12 12)" />
-            <ellipse cx="12" cy="5.5" rx="3.2" ry="5" transform="rotate(315 12 12)" />
-          </g>
-          <circle cx="12" cy="12" r="3.6" fill="#000000" />
-        </svg>
-        Shawna Kirby
-      </span>
+      <a href="index.html" class="footer-col-label">Shawna Kirby</a>
       <div class="footer-grid">
         <div class="footer-col">
           <ul class="footer-links">
@@ -130,7 +69,6 @@
         </div>
         <div class="footer-col">
           <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
             <li><a href="work.html">Portfolio</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
