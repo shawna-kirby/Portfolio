@@ -36,10 +36,11 @@ PRIVATE = os.path.join(ROOT, "_private")
 ITERATIONS = 310000
 
 GATE = """<main class="lock-gate" data-protected data-checking>
-    <div class="container-prose">
+    <div class="container">
+      <div class="portfolio-intro">
       <h1>My work is best shared in context.</h1>
       <p>
-        I welcome the opportunity to share, in live conversation, the pixels, decisions,
+        I welcome the opportunity to share in live conversation the pixels, decisions,
         tradeoffs, and outcomes I&rsquo;ve delivered. Have a password? Enter it below. Otherwise,
         <a href="%(prefix)scontact.html">get in touch</a> for an introductory conversation.
       </p>
@@ -47,7 +48,10 @@ GATE = """<main class="lock-gate" data-protected data-checking>
         <label for="lock-password" class="eyebrow">Password</label>
         <div class="lock-row">
           <input id="lock-password" type="password" autocomplete="current-password" required />
-          <button type="submit" class="btn btn-primary" disabled>View case studies</button>
+          <button type="submit" class="btn btn-primary" disabled>
+            <span class="btn-spinner" aria-hidden="true"></span>
+            <span class="btn-label">View case studies</span>
+          </button>
         </div>
         <p class="lock-error" role="alert" hidden>That password didn&rsquo;t work. Try again.</p>
       </form>
@@ -55,6 +59,7 @@ GATE = """<main class="lock-gate" data-protected data-checking>
         <style>.lock-gate[data-checking] { visibility: visible; }</style>
         <p>JavaScript is needed to unlock this page.</p>
       </noscript>
+      </div>
     </div>
   </main>
 

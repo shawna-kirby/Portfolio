@@ -13,6 +13,10 @@
   const input = gate.querySelector("#lock-password");
   const error = gate.querySelector(".lock-error");
   const button = form.querySelector("button");
+  const label = button.querySelector(".btn-label");
+  const idleLabel = label.textContent;
+  // Keep the loading state up long enough to read as a transition, not a flicker.
+  const MIN_LOADING_MS = 600;
 
   const fromB64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
   const toB64 = (bytes) => btoa(String.fromCharCode(...bytes));
@@ -87,11 +91,14 @@
     if (!input.value) return;
     button.disabled = true;
     button.setAttribute("aria-busy", "true");
+    label.textContent = "Loading case studies…";
     error.hidden = true;
+    const minDelay = new Promise((resolve) => setTimeout(resolve, MIN_LOADING_MS));
 
     try {
       const keys = await deriveKeys(input.value);
       const html = await decrypt(keys);
+      await minDelay;
       if (html === null) {
         error.hidden = false;
         input.select();
@@ -103,6 +110,7 @@
       reveal(html);
     } finally {
       button.removeAttribute("aria-busy");
+      label.textContent = idleLabel;
       syncButton();
     }
   });
