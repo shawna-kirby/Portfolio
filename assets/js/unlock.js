@@ -75,10 +75,18 @@
     showGate();
   })();
 
+  // The submit button stays disabled while the field is blank.
+  const syncButton = () => {
+    button.disabled = !input.value;
+  };
+  input.addEventListener("input", syncButton);
+  syncButton();
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!input.value) return;
     button.disabled = true;
+    button.setAttribute("aria-busy", "true");
     error.hidden = true;
 
     try {
@@ -94,7 +102,8 @@
       } catch (e) {}
       reveal(html);
     } finally {
-      button.disabled = false;
+      button.removeAttribute("aria-busy");
+      syncButton();
     }
   });
 })();

@@ -37,17 +37,17 @@ ITERATIONS = 310000
 
 GATE = """<main class="lock-gate" data-protected data-checking>
     <div class="container-prose">
-      <span class="eyebrow">Password protected</span>
-      <h1>Enter the password to view my work</h1>
+      <h1>My work is best shared in context.</h1>
       <p>
-        Case studies are shared by request.
-        <a href="mailto:shawna@shawnakirby.com?subject=Portfolio%%20password">Request access</a>
+        I welcome the opportunity to share, in live conversation, the pixels, decisions,
+        tradeoffs, and outcomes I&rsquo;ve delivered. Have a password? Enter it below. Otherwise,
+        <a href="%(prefix)scontact.html">get in touch</a> for an introductory conversation.
       </p>
       <form class="lock-form">
         <label for="lock-password" class="eyebrow">Password</label>
         <div class="lock-row">
           <input id="lock-password" type="password" autocomplete="current-password" required />
-          <button type="submit" class="btn btn-primary">Unlock</button>
+          <button type="submit" class="btn btn-primary" disabled>View case studies</button>
         </div>
         <p class="lock-error" role="alert" hidden>That password didn&rsquo;t work. Try again.</p>
       </form>
@@ -120,7 +120,32 @@ def lock_page(rel, salt, keys):
     return html[:start] + "\n\n  " + gate + "\n\n  " + html[footer_start:]
 
 
+def stale_pages():
+    """Protected pages edited in _private/ since they were last locked."""
+    stale = []
+    for rel in private_pages():
+        public = os.path.join(ROOT, rel)
+        if not os.path.isfile(public) or os.path.getmtime(os.path.join(PRIVATE, rel)) > os.path.getmtime(public):
+            stale.append(rel)
+    return stale
+
+
+def check():
+    """`python3 lock.py --check`: used by the git pre-commit hook."""
+    stale = stale_pages()
+    if not stale:
+        return
+    print("These protected pages were edited but not locked, so the changes won't be published:")
+    for rel in stale:
+        print("  %s" % rel)
+    print("Run `python3 lock.py` (or ask Claude to \"lock and push\"), then commit again.")
+    sys.exit(1)
+
+
 def main():
+    if "--check" in sys.argv[1:]:
+        return check()
+
     pages = list(private_pages())
     if not pages:
         sys.exit("No pages found in _private/ — nothing to lock.")

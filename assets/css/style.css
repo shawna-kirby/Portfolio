@@ -992,6 +992,14 @@ section {
 }
 
 .lock-row .btn:disabled {
+  background: var(--color-panel-deep);
+  color: var(--color-secondary);
+  cursor: not-allowed;
+}
+
+.lock-row .btn[aria-busy="true"] {
+  background: var(--color-ink);
+  color: var(--color-paper);
   opacity: 0.6;
   cursor: progress;
 }

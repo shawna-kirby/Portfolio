@@ -33,7 +33,9 @@ Then visit `http://localhost:8765/index.html`.
 - **Edit only the copies in `_private/`** (`_private/work.html`, `_private/work/*.html`). `_private/` is gitignored. New case studies are created there too (duplicate `_private/work/case-study-template.html`).
 - **Run `python3 lock.py`** after editing, before committing. It asks for the password, encrypts everything between each page's `</nav>` and `<footer>`, and writes the locked page to the public path (`work.html`, `work/*.html`). Never hand-edit those public copies — they're overwritten on every lock.
 - `assets/js/unlock.js` shows the password prompt and decrypts in the browser; the unlocked key is kept in `sessionStorage` so one password entry opens every protected page for that tab session.
-- `serve.py` previews the `_private/` copies by default; add `?locked` to a URL to see the public, locked version.
+- `serve.py` previews the `_private/` copies by default; add `?locked` to a URL to see the public, locked version. It shows a "Not published yet" banner while any `_private/` page is newer than its locked copy.
+- A local git pre-commit hook (`.git/hooks/pre-commit`, runs `python3 lock.py --check`) blocks commits while any protected page is un-locked.
+- After editing anything in `_private/`, re-lock (`PORTFOLIO_PASSWORD=… python3 lock.py`, same password as before) and offer to commit and push — the site owner relies on this and won't remember on their own.
 - Nav/footer changes still need to be made in the `_private/` copies (and then re-locked) rather than the public ones.
 
 Every page includes its own copy of the nav and footer markup (no templating layer), so changes to nav links or footer content need to be repeated across `index.html`, `work.html`, `about.html`, and each `work/*.html` page.

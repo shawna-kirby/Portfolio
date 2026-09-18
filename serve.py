@@ -15,6 +15,8 @@ Two things it adds on top of `python3 -m http.server`:
 3. Protected pages. The Portfolio page and case studies are served from their
    editable copies in _private/, so edits show up without re-running lock.py.
    Add ?locked to a URL to see the password-protected version instead.
+   While any of them has edits that haven't been locked, every page shows a
+   "Not published yet" banner.
 
     python3 serve.py            # http://localhost:8766
     python3 serve.py 9000       # a different port
@@ -25,6 +27,9 @@ import json
 import os
 import socketserver
 import sys
+from html import escape as html_escape
+
+import lock
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8766
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -70,6 +75,23 @@ def site_version():
     return newest
 
 
+def stale_banner():
+    """Reminder shown on every page while a protected page has unlocked edits."""
+    stale = lock.stale_pages()
+    if not stale:
+        return ""
+    items = "".join("<li>%s</li>" % html_escape(rel) for rel in stale)
+    return """
+<div style="position:fixed;left:16px;right:16px;bottom:16px;z-index:1000;max-width:560px;margin:0 auto;
+  padding:16px 20px;background:#111;color:#f4f4f2;border-radius:3px;font:14px/1.5 Inter,sans-serif;
+  box-shadow:0 4px 16px rgba(0,0,0,.2)">
+  <strong>Not published yet.</strong> These case study edits need to be locked before they go live.
+  Ask Claude to &ldquo;lock and push.&rdquo;
+  <ul style="margin:8px 0 0;padding-left:18px;color:#b8b8b0">%s</ul>
+</div>
+""" % items
+
+
 class PreviewHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
@@ -113,10 +135,11 @@ class PreviewHandler(http.server.SimpleHTTPRequestHandler):
         if path.endswith(".html") and os.path.isfile(path):
             with open(path, "r", encoding="utf-8") as f:
                 html = f.read()
+            injected = stale_banner() + RELOAD_SCRIPT
             if "</body>" in html:
-                html = html.replace("</body>", RELOAD_SCRIPT + "</body>", 1)
+                html = html.replace("</body>", injected + "</body>", 1)
             else:
-                html += RELOAD_SCRIPT
+                html += injected
             self._send_bytes(html.encode("utf-8"), "text/html; charset=utf-8")
             return
 
