@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=8b0a384f" />
 </head>
 <body>
 
@@ -32,7 +32,7 @@
 
   <header class="hero">
     <div class="container">
-      <h1>Who I am and what I stand for.</h1>
+      <h1>Who I am and what I stand for</h1>
       <p class="lede" style="max-width: none;">
         Thanks for stopping by, I&rsquo;m Shawna. I&rsquo;ve spent the bulk of my 20-year design career
         serving the financial needs of small business customers, most recently as Director of Design
@@ -44,38 +44,28 @@
     </div>
   </header>
 
-  <section class="strengths" style="margin-top: 60px;">
+  <section class="strengths" style="margin-top: var(--section-space-sm);">
     <div class="container">
       <div class="strengths-grid">
         <div class="strength-card">
           <div class="strength-card-media">
             <img src="assets/img/ShawnaKirby_AboutMe.jpg" alt="Shawna Kirby" style="object-position: center 20%;" />
           </div>
-          <p>As a leader I embody clarity and kindness held together. I'm direct enough to define and hold a high bar, and human enough to cultivate a community of empowered makers.</p>
-          <span class="eyebrow">Case studies</span>
-          <ul>
-            <li><a href="work/multi-bill-ingest.html" target="_blank" rel="noopener">Multi-bill ingest</a></li>
-            <li><a href="work/make-all-invoices-payable.html" target="_blank" rel="noopener">Make all invoices payable</a></li>
-            <li><a href="work/quickbooks-lending.html" target="_blank" rel="noopener">QuickBooks Line of Credit</a></li>
-          </ul>
+          <h2>As a leader</h2>
+          <p>I embody clarity and kindness together. I&rsquo;m direct enough to define and hold a high bar, and human enough to cultivate a community of empowered makers.</p>
         </div>
         <div class="strength-card">
           <div class="strength-card-media">
             <img src="assets/img/T3_PocketRadio.jpg" alt="Braun T3 pocket radio, designed by Dieter Rams" />
           </div>
-          <p>As a practitioner, my ethos aligns with Dieter Rams&rsquo; <em>&#8220;good design is as little design as possible.&#8221;</em> To me, successful UX means people complete their task effortlessly — without a single unnecessary click.</p>
-          <span class="eyebrow">Case studies</span>
-          <ul>
-            <li><a href="work/case-study-template.html" target="_blank" rel="noopener">[e.g. End-to-end product design, from research to shipped UI]</a></li>
-            <li><a href="work/case-study-template.html" target="_blank" rel="noopener">[e.g. Rapid prototyping and usability testing]</a></li>
-            <li><a href="work/case-study-template.html" target="_blank" rel="noopener">[e.g. Design systems and interaction craft]</a></li>
-          </ul>
+          <h2>As a practitioner</h2>
+          <p>My ethos aligns with Dieter Rams&rsquo; <em>&#8220;good design is as little design as possible.&#8221;</em> To me, successful UX means people complete their task effortlessly — without a single unnecessary click.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="philosophy" style="margin-top: 80px;">
+  <section class="philosophy" style="margin-top: var(--section-space);">
     <div class="container">
       <blockquote>
         “Working with Shawna has taught me so much about the importance of simplification and
@@ -87,41 +77,76 @@
     </div>
   </section>
 
-  <section style="margin-top: 80px;">
+  <section style="margin-top: var(--section-space);">
     <div class="container">
-      <div class="section-head section-head--stacked" style="margin-bottom: 40px;">
+      <div class="section-head section-head--stacked" style="margin-bottom: var(--space-7);">
         <h2>Off the clock</h2>
-        <p>Things I make to re-charge my creative batteries.</p>
+        <p>Creative pursuits outside of &ldquo;work.&rdquo;</p>
       </div>
       <div class="work-grid">
 
-        <a href="#" class="work-card">
-          <div class="work-card-media">
-            <img src="assets/img/HappyHollow_Guache.jpg" alt="Gouache painting of goats at Happy Hollow" />
-          </div>
-          <h3>Happy Hollow</h3>
-          <p>Gouache on paper. Saturday, warm and windy — goats at the petting zoo.</p>
+        <a href="#gallery-artwork" class="work-card" data-gallery="gallery-artwork">
+          <div class="work-card-media">[Add image]</div>
+          <h3>Artwork</h3>
+          <p>Brush, needle, and pen &mdash; whatever the idea calls for.</p>
           <span class="link-arrow">View more</span>
         </a>
 
-        <a href="#" class="work-card">
-          <div class="work-card-media">
-            <img src="assets/img/JohoCafe_Guache.jpg" alt="Gouache painting of flowers at Joho Cafe" />
-          </div>
-          <h3>Joho Cafe</h3>
-          <p>Gouache on paper. July, hot out — peonies on the table.</p>
+        <a href="#gallery-garments" class="work-card" data-gallery="gallery-garments">
+          <div class="work-card-media">[Add image]</div>
+          <h3>Garment making</h3>
+          <p>Bespoke pieces from vintage fabric and patterns.</p>
           <span class="link-arrow">View more</span>
         </a>
 
-        <a href="#" class="work-card">
-          <div class="work-card-media">
-            <img src="assets/img/PiazzaSanPaulino_Guache.jpg" alt="Gouache painting of Piazza San Paulino" />
-          </div>
-          <h3>Piazza San Paulino</h3>
-          <p>Gouache on paper. A study in yellow light and a stranger's phone call.</p>
+        <a href="#gallery-home" class="work-card" data-gallery="gallery-home">
+          <div class="work-card-media">[Add image]</div>
+          <h3>Home curation</h3>
+          <p>An original Eichler, kept original, furnished in vintage.</p>
           <span class="link-arrow">View more</span>
         </a>
 
+      </div>
+
+      <!--
+        Gallery contents. Each <li> is one slide in the lightbox that opens from
+        the matching card above: an image, then a title, a detail line, and a
+        description. Leave out the <img> to show a placeholder panel.
+      -->
+      <div hidden>
+        <ol class="gallery-source" id="gallery-artwork" data-title="Artwork">
+          <li>
+            <h4>Happy Hollow</h4>
+            <p class="gallery-meta">Gouache on paper</p>
+            <p>Saturday, warm and windy &mdash; goats at the petting zoo.</p>
+          </li>
+          <li>
+            <h4>Joho Cafe</h4>
+            <p class="gallery-meta">Gouache on paper</p>
+            <p>July, hot out &mdash; peonies on the table.</p>
+          </li>
+          <li>
+            <h4>Piazza San Paulino</h4>
+            <p class="gallery-meta">Gouache on paper</p>
+            <p>A study in yellow light and a stranger&rsquo;s phone call.</p>
+          </li>
+        </ol>
+
+        <ol class="gallery-source" id="gallery-garments" data-title="Garment making">
+          <li>
+            <h4>[Garment name]</h4>
+            <p class="gallery-meta">[Fabric, pattern, year]</p>
+            <p>[A sentence or two about this piece.]</p>
+          </li>
+        </ol>
+
+        <ol class="gallery-source" id="gallery-home" data-title="Home curation">
+          <li>
+            <h4>[Room or piece]</h4>
+            <p class="gallery-meta">[Maker, era]</p>
+            <p>[A sentence or two about this space or find.]</p>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
@@ -148,6 +173,7 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/gallery.js?v=de865a05"></script>
+  <script src="assets/js/main.js?v=0e17470b"></script>
 </body>
 </html>

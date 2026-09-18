@@ -16,6 +16,28 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
 
+  /* Spacing scale — every margin, padding and gap on the site uses one of
+     these steps (8-point grid, plus 4 and 12 for tight typographic pairs). */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 160px;
+
+  /* Layout rhythm — named uses of the scale. Desktop values here; on phones
+     (max-width: 720px) each steps down the same scale. */
+  --page-top: var(--space-10);
+  --section-space-lg: var(--space-11);
+  --section-space: var(--space-9);
+  --section-space-sm: var(--space-8);
+  --nav-height: var(--space-9);
+
   --container: 1200px;
   --container-prose: 720px;
 }
@@ -51,13 +73,13 @@ a {
 .container {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 var(--space-6);
 }
 
 .container-prose {
   max-width: var(--container-prose);
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 var(--space-6);
 }
 
 /* ---------- Nav ---------- */
@@ -79,13 +101,13 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 96px;
+  height: var(--nav-height);
 }
 
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: var(--space-2);
   font-family: var(--font-sans);
   font-size: 17px;
   line-height: 1;
@@ -109,7 +131,7 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: var(--space-7);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -141,7 +163,7 @@ a {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: var(--space-2);
 }
 
 .nav-toggle span {
@@ -158,8 +180,8 @@ a {
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 16px 32px;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -182,7 +204,7 @@ a {
 .link-arrow {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: var(--space-2);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -208,15 +230,15 @@ a {
 
 section {
   padding: 0;
-  margin-top: 160px;
+  margin-top: var(--section-space-lg);
 }
 
 .section-head {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 64px;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
 }
 
 .section-head--stacked {
@@ -227,7 +249,7 @@ section {
   font-family: var(--font-serif);
   font-size: 18px;
   color: var(--color-secondary);
-  margin: 12px 0 0;
+  margin: var(--space-3) 0 0;
 }
 
 .section-head h2 {
@@ -251,11 +273,11 @@ section {
 /* ---------- Hero ---------- */
 
 .hero {
-  padding: 140px 0 0;
+  padding: var(--page-top) 0 0;
 }
 
 .hero-eyebrow {
-  margin-bottom: 32px;
+  margin-bottom: var(--space-6);
 }
 
 .hero h1 {
@@ -264,7 +286,7 @@ section {
   line-height: 0.98;
   font-weight: 700;
   letter-spacing: -0.01em;
-  margin: 0 0 40px;
+  margin: 0 0 var(--space-7);
   max-width: 15ch;
 }
 
@@ -274,14 +296,14 @@ section {
   line-height: 1.5;
   color: var(--color-secondary);
   max-width: 50ch;
-  margin: 0 0 48px;
+  margin: 0 0 var(--space-7);
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: var(--space-6);
 }
 
 /* ---------- Dual strengths (IC + Leader) ---------- */
@@ -289,12 +311,12 @@ section {
 .strengths-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 96px;
+  gap: var(--space-9);
 }
 
 .strength-card-media {
   aspect-ratio: 4 / 3;
-  margin-bottom: 40px;
+  margin-bottom: var(--space-7);
   background: var(--color-panel);
   overflow: hidden;
 }
@@ -313,12 +335,23 @@ section {
   font-size: 15px;
   color: var(--color-secondary);
   text-align: center;
-  padding: 24px;
+  padding: var(--space-5);
 }
 
 .strength-card .eyebrow {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-2);
+}
+
+/* Card heading + paragraph mirror .section-head h2 + its subtitle
+   (e.g. "Off the clock" on the About page). */
+.strength-card h2 {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  margin: 0 0 var(--space-3);
 }
 
 .strength-card h3 {
@@ -327,7 +360,7 @@ section {
   line-height: 1.2;
   letter-spacing: -0.01em;
   font-weight: 600;
-  margin: 0 0 20px;
+  margin: 0 0 var(--space-5);
 }
 
 .strength-card p {
@@ -335,7 +368,7 @@ section {
   font-size: 18px;
   line-height: 1.5;
   color: var(--color-secondary);
-  margin: 0 0 32px;
+  margin: 0 0 var(--space-6);
 }
 
 .strength-card ul {
@@ -345,7 +378,7 @@ section {
 }
 
 .strength-card li {
-  padding: 6px 0;
+  padding: var(--space-2) 0;
   color: var(--color-secondary);
 }
 
@@ -364,7 +397,7 @@ section {
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 56px 40px;
+  gap: var(--space-8) var(--space-6);
 }
 
 .work-card {
@@ -384,7 +417,7 @@ section {
   font-family: var(--font-serif);
   font-size: 14px;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
 }
 
 .work-card-media img {
@@ -405,7 +438,7 @@ section {
   font-family: var(--font-serif);
   font-size: 13px;
   color: var(--color-secondary);
-  margin-bottom: 20px;
+  margin-bottom: var(--space-5);
 }
 
 .work-card h3 {
@@ -414,7 +447,7 @@ section {
   line-height: 1.25;
   letter-spacing: -0.01em;
   font-weight: 600;
-  margin: 0 0 12px;
+  margin: 0 0 var(--space-3);
   transition: color 0.15s ease;
 }
 
@@ -427,14 +460,14 @@ section {
   font-family: var(--font-serif);
   color: var(--color-secondary);
   font-size: 15px;
-  margin: 0 0 18px;
+  margin: 0 0 var(--space-4);
 }
 
 /* ---------- Portfolio: focus areas (4-up overview) ---------- */
 
 .portfolio-intro {
   max-width: 780px;
-  margin-bottom: 88px;
+  margin-bottom: var(--space-9);
 }
 
 /* Matches .hero h1 (home, about) and .contact-hero h1 (contact).
@@ -445,7 +478,7 @@ section {
   font-size: clamp(44px, 6.8vw, 88px);
   line-height: 0.98;
   letter-spacing: -0.01em;
-  margin: 0 0 24px;
+  margin: 0 0 var(--space-5);
 }
 
 .portfolio-intro p {
@@ -459,7 +492,7 @@ section {
 .area-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: var(--space-6);
 }
 
 .area-col {
@@ -477,7 +510,7 @@ section {
   font-family: var(--font-serif);
   font-size: 13px;
   overflow: hidden;
-  margin-bottom: 22px;
+  margin-bottom: var(--space-5);
 }
 
 .area-media img {
@@ -501,7 +534,7 @@ section {
   line-height: 1.15;
   letter-spacing: -0.015em;
   font-weight: 600;
-  margin: 0 0 10px;
+  margin: 0 0 var(--space-3);
 }
 
 .area-sub {
@@ -509,7 +542,7 @@ section {
   font-size: 15px;
   line-height: 1.5;
   color: var(--color-secondary);
-  margin: 0 0 22px;
+  margin: 0 0 var(--space-5);
 }
 
 /* Case studies — deliberately secondary to the area above.
@@ -518,12 +551,12 @@ section {
 .area-cases {
   list-style: none;
   margin: auto 0 0;
-  padding: 18px 0 0;
+  padding: var(--space-4) 0 0;
   border-top: 1px solid var(--color-panel-deep);
 }
 
 .area-cases li + li {
-  margin-top: 9px;
+  margin-top: var(--space-2);
 }
 
 .area-cases a {
@@ -544,13 +577,13 @@ section {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: var(--space-3);
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-secondary);
-  margin-bottom: 20px;
+  margin-bottom: var(--space-5);
 }
 
 .case-ladder-area {
@@ -565,7 +598,7 @@ section {
 @media (max-width: 900px) {
   .area-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 56px 32px;
+    gap: var(--space-8) var(--space-6);
   }
 
   .portfolio-intro h1 {
@@ -593,7 +626,7 @@ section {
   line-height: 1.4;
   color: var(--color-ink);
   max-width: 45ch;
-  margin: 0 auto 28px;
+  margin: 0 auto var(--space-6);
   text-wrap: pretty;
 }
 
@@ -611,7 +644,7 @@ section {
 .about-teaser {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 56px;
+  gap: var(--space-8);
   align-items: start;
 }
 
@@ -628,7 +661,7 @@ section {
   color: var(--color-secondary);
   font-size: 19px;
   max-width: 56ch;
-  margin: 20px 0 28px;
+  margin: var(--space-5) 0 var(--space-6);
 }
 
 /* ---------- Footer ---------- */
@@ -636,14 +669,14 @@ section {
 .site-footer {
   background: var(--color-ink);
   color: var(--color-paper);
-  padding: 64px 0;
-  margin-top: 160px;
+  padding: var(--space-8) 0;
+  margin-top: var(--section-space-lg);
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: max-content max-content;
-  gap: 64px;
+  gap: var(--space-8);
 }
 
 /* inline-flex so the link's hit area is the text, not the full row. */
@@ -656,7 +689,7 @@ section {
   letter-spacing: -0.01em;
   color: var(--color-paper);
   text-decoration: none;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
   transition: color 0.15s ease;
 }
 
@@ -672,7 +705,7 @@ section {
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-3);
   list-style: none;
   margin: 0;
   padding: 0;
@@ -693,12 +726,12 @@ section {
 /* ---------- Simple page hero (About / Work index / Case study) ---------- */
 
 .page-hero {
-  padding: 96px 0 0;
+  padding: var(--space-9) 0 0;
 }
 
 .page-hero .eyebrow {
   display: block;
-  margin-bottom: 24px;
+  margin-bottom: var(--space-5);
 }
 
 .page-hero h1 {
@@ -707,7 +740,7 @@ section {
   font-size: clamp(36px, 5.5vw, 56px);
   line-height: 1.05;
   letter-spacing: -0.02em;
-  margin: 0 0 24px;
+  margin: 0 0 var(--space-5);
 }
 
 .contact-hero h1 {
@@ -716,7 +749,7 @@ section {
   font-size: clamp(44px, 6.8vw, 88px);
   line-height: 0.98;
   letter-spacing: -0.01em;
-  margin: 0 0 24px;
+  margin: 0 0 var(--space-5);
 }
 
 .page-hero p {
@@ -735,7 +768,7 @@ section {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-secondary);
-  margin-bottom: 40px;
+  margin-bottom: var(--space-7);
 }
 
 .back-link:hover {
@@ -753,13 +786,13 @@ section {
 
 .placeholder-note {
   background: var(--color-panel);
-  padding: 24px 32px;
+  padding: var(--space-5) var(--space-6);
   font-size: 14px;
   color: var(--color-secondary);
 }
 
 .placeholder-note .eyebrow {
-  margin-right: 10px;
+  margin-right: var(--space-3);
 }
 
 /* ---------- Contact methods ---------- */
@@ -772,7 +805,7 @@ section {
 
 .contact-methods li {
   padding: 0;
-  margin-top: 32px;
+  margin-top: var(--space-6);
 }
 
 .contact-methods li:first-child {
@@ -782,7 +815,7 @@ section {
 .contact-methods .eyebrow.contact-eyebrow-icon {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
 .contact-icon {
@@ -794,7 +827,7 @@ section {
 
 .contact-methods .eyebrow {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: var(--space-1);
 }
 
 .contact-methods a,
@@ -815,7 +848,7 @@ section {
 .about-hero-layout {
   display: grid;
   grid-template-columns: 1fr 453px;
-  gap: 56px;
+  gap: var(--space-8);
   align-items: center;
 }
 
@@ -846,12 +879,12 @@ section {
 .case-study-body {
   display: flex;
   flex-direction: column;
-  gap: 72px;
+  gap: var(--space-8);
 }
 
 .case-study-section .eyebrow {
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
 }
 
 .case-study-section h2 {
@@ -860,7 +893,7 @@ section {
   font-size: clamp(22px, 2.6vw, 28px);
   line-height: 1.2;
   letter-spacing: -0.01em;
-  margin: 0 0 18px;
+  margin: 0 0 var(--space-4);
 }
 
 .case-study-section p {
@@ -874,32 +907,23 @@ section {
 @media (max-width: 900px) {
   .strengths-grid {
     grid-template-columns: 1fr;
-    gap: 64px;
-  }
-
-  .work-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 48px 32px;
+    gap: var(--space-8);
   }
 
   .about-teaser {
     grid-template-columns: 1fr;
-  }
-
-  section {
-    padding: 96px 0;
   }
 }
 
 @media (max-width: 720px) {
   .nav-links {
     position: fixed;
-    inset: 96px 0 0 0;
+    inset: var(--nav-height) 0 0 0;
     background: var(--color-paper);
     flex-direction: column;
     align-items: flex-start;
-    padding: 32px;
-    gap: 24px;
+    padding: var(--space-6);
+    gap: var(--space-5);
     transform: translateX(100%);
     transition: transform 0.25s ease;
   }
@@ -914,22 +938,19 @@ section {
 
   .work-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-7);
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  section {
-    padding: 72px 0;
+    gap: var(--space-6);
   }
 }
 
 /* ---------- Password gate (Portfolio + case studies) ---------- */
 
 .lock-gate {
-  padding: 140px 0 0;
+  padding: var(--page-top) 0 0;
 }
 
 .lock-gate[data-checking] {
@@ -943,23 +964,23 @@ section {
 }
 
 .lock-form {
-  margin-top: 48px;
+  margin-top: var(--space-7);
 }
 
 .lock-form label {
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: var(--space-3);
 }
 
 .lock-row {
   display: flex;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .lock-row input {
   flex: 1;
   min-width: 0;
-  padding: 14px 16px;
+  padding: var(--space-4) var(--space-4);
   font: inherit;
   color: var(--color-ink);
   background: var(--color-paper);
@@ -1018,7 +1039,7 @@ section {
 }
 
 .lock-form .lock-error {
-  margin-top: 12px;
+  margin-top: var(--space-3);
   font-family: var(--font-sans);
   font-size: 14px;
   color: var(--color-signal);
@@ -1027,5 +1048,179 @@ section {
 @media (max-width: 560px) {
   .lock-row {
     flex-direction: column;
+  }
+}
+
+/* ---------- Off the clock: gallery lightbox (assets/js/gallery.js) ---------- */
+
+html.has-lightbox {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-rows: var(--nav-height) minmax(0, 1fr);
+  padding: 0 var(--space-6) var(--space-7);
+  background: var(--color-paper);
+  overflow-y: auto;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+}
+
+.lightbox-bar,
+.lightbox-stage {
+  width: 100%;
+  max-width: calc(var(--container) - 64px);
+  margin: 0 auto;
+}
+
+.lightbox-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lightbox-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: var(--space-8);
+  align-items: end;
+  min-height: 0;
+}
+
+.lightbox-media {
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-media img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-media img.is-loading {
+  opacity: 0;
+}
+
+.lightbox-placeholder {
+  width: min(640px, 100%);
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-panel);
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--color-secondary);
+}
+
+.lightbox-count {
+  display: block;
+  margin-bottom: var(--space-5);
+}
+
+.lightbox-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+  margin: 0 0 var(--space-2);
+}
+
+.lightbox-meta {
+  display: block;
+  margin: 0 0 var(--space-4);
+}
+
+.lightbox-desc {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-secondary);
+  margin: 0 0 var(--space-7);
+}
+
+.lightbox-nav {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.lightbox-nav[hidden] {
+  display: none;
+}
+
+.lightbox-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.lightbox-link:hover {
+  color: var(--color-hover);
+}
+
+.lightbox-link:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+@media (max-width: 720px) {
+  .lightbox {
+    grid-template-rows: var(--nav-height) auto;
+    padding: 0 var(--space-6) var(--space-6);
+  }
+
+  .lightbox-stage {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+
+  .lightbox-media img {
+    max-height: 60vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .lightbox-media img {
+    transition: none;
+  }
+}
+
+/* Phones: the layout rhythm steps down the spacing scale so there's always
+   content in view — no screen-high stretches of empty space. */
+@media (max-width: 720px) {
+  :root {
+    --page-top: var(--space-8);
+    --section-space-lg: var(--space-8);
+    --section-space: var(--space-7);
+    --section-space-sm: var(--space-6);
+    --nav-height: var(--space-8);
   }
 }

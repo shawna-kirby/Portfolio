@@ -14,6 +14,9 @@ assets/js/unlock.js decrypts it in the browser.
 
     python3 lock.py
 
+It also stamps every page's stylesheet and script links with a fingerprint of
+the file (cache busting — see below), so run it after changing assets/ too.
+
 Run it after every edit to a protected page, before committing. It asks for
 the password each time; use the same one unless you mean to change it.
 
@@ -28,6 +31,7 @@ import hashlib
 import hmac
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -38,7 +42,7 @@ ITERATIONS = 310000
 GATE = """<main class="lock-gate" data-protected data-checking>
     <div class="container">
       <div class="portfolio-intro">
-      <h1>My work is best shared in context.</h1>
+      <h1>My work is best shared in context</h1>
       <p>
         I welcome the opportunity to share in live conversation the pixels, decisions,
         tradeoffs, and outcomes I&rsquo;ve delivered. Have a password? Enter it below. Otherwise,
@@ -135,14 +139,79 @@ def stale_pages():
     return stale
 
 
+# ---------- Cache busting ----------
+#
+# Every link to a stylesheet or script carries a fingerprint of the file's
+# contents (style.css?v=3f9a1c2e). When the file changes, so does the link, so
+# browsers and GitHub's CDN fetch the new file together with the new page
+# instead of pairing a fresh page with a stale stylesheet.
+
+ASSET_REF = re.compile(r'((?:href|src)="(?:\.\./)*)(assets/(?:css|js)/[\w.-]+\.(?:css|js))(?:\?v=[0-9a-f]*)?"')
+
+
+def asset_versions():
+    versions = {}
+    for folder in ("assets/css", "assets/js"):
+        for name in os.listdir(os.path.join(ROOT, folder)):
+            path = "%s/%s" % (folder, name)
+            with open(os.path.join(ROOT, path), "rb") as f:
+                versions[path] = hashlib.sha256(f.read()).hexdigest()[:8]
+    return versions
+
+
+def stamp(html, versions):
+    def replace(match):
+        version = versions.get(match.group(2))
+        if not version:
+            return match.group(0)
+        return '%s%s?v=%s"' % (match.group(1), match.group(2), version)
+    return ASSET_REF.sub(replace, html)
+
+
+def site_pages():
+    """Every HTML page: the public site plus the editable copies in _private/."""
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        dirnames[:] = sorted(d for d in dirnames if not d.startswith("."))
+        for name in sorted(filenames):
+            if name.endswith(".html"):
+                yield os.path.relpath(os.path.join(dirpath, name), ROOT)
+
+
+def unstamped_pages(versions):
+    stale = []
+    for rel in site_pages():
+        with open(os.path.join(ROOT, rel), "r", encoding="utf-8") as f:
+            html = f.read()
+        if stamp(html, versions) != html:
+            stale.append(rel)
+    return stale
+
+
+def stamp_pages(versions):
+    """Rewrite asset links on every page whose fingerprints are out of date."""
+    for rel in unstamped_pages(versions):
+        path = os.path.join(ROOT, rel)
+        with open(path, "r", encoding="utf-8") as f:
+            html = f.read()
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(stamp(html, versions))
+        print("  stamped %s" % rel)
+
+
 def check():
     """`python3 lock.py --check`: used by the git pre-commit hook."""
     stale = stale_pages()
-    if not stale:
+    unstamped = unstamped_pages(asset_versions())
+    if not stale and not unstamped:
         return
-    print("These protected pages were edited but not locked, so the changes won't be published:")
-    for rel in stale:
-        print("  %s" % rel)
+    if stale:
+        print("These protected pages were edited but not locked, so the changes won't be published:")
+        for rel in stale:
+            print("  %s" % rel)
+    if unstamped:
+        print("These pages link to an out-of-date version of a stylesheet or script:")
+        for rel in unstamped:
+            print("  %s" % rel)
     print("Run `python3 lock.py` (or ask Claude to \"lock and push\"), then commit again.")
     sys.exit(1)
 
@@ -156,12 +225,15 @@ def main():
         sys.exit("No pages found in _private/ — nothing to lock.")
 
     password = ask_password()
+    versions = asset_versions()
+    stamp_pages(versions)
+
     # One salt per run, shared by every page, so a visitor who unlocks one
     # page can open the rest without re-entering the password.
     salt = os.urandom(16)
     keys = hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"), salt, ITERATIONS, dklen=64)
 
-    locked = {rel: lock_page(rel, salt, keys) for rel in pages}
+    locked = {rel: stamp(lock_page(rel, salt, keys), versions) for rel in pages}
     for rel, html in locked.items():
         out = os.path.join(ROOT, rel)
         os.makedirs(os.path.dirname(out), exist_ok=True)
