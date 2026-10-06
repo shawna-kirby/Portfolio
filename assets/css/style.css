@@ -489,15 +489,22 @@ section {
   margin: 0;
 }
 
+/* No row gap: the columns share rows through subgrid, so a row gap would
+   land between each area's name and subhead. Space between wrapped rows
+   of areas comes from margin under the case lists instead. */
 .area-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-6);
+  column-gap: var(--space-6);
 }
 
+/* Each column spans four shared rows (image, name, subhead, cases) so
+   the rules line up across columns even when a subhead wraps. */
 .area-col {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  row-gap: 0;
 }
 
 .area-media {
@@ -534,7 +541,7 @@ section {
   line-height: 1.15;
   letter-spacing: -0.015em;
   font-weight: 600;
-  margin: 0 0 var(--space-3);
+  margin: 0 0 var(--space-2);
 }
 
 .area-sub {
@@ -545,12 +552,10 @@ section {
   margin: 0 0 var(--space-5);
 }
 
-/* Case studies — deliberately secondary to the area above.
-   margin-top:auto bottom-aligns the lists so the rules line up
-   across columns even when a subhead wraps to two lines. */
+/* Case studies — deliberately secondary to the area above. */
 .area-cases {
   list-style: none;
-  margin: auto 0 0;
+  margin: 0;
   padding: var(--space-4) 0 0;
   border-top: 1px solid var(--color-panel-deep);
 }
@@ -598,7 +603,10 @@ section {
 @media (max-width: 900px) {
   .area-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-8) var(--space-6);
+  }
+
+  .area-col:nth-child(-n+2) .area-cases {
+    margin-bottom: var(--space-8);
   }
 
   .portfolio-intro h1 {
@@ -609,6 +617,10 @@ section {
 @media (max-width: 560px) {
   .area-grid {
     grid-template-columns: 1fr;
+  }
+
+  .area-col:not(:last-child) .area-cases {
+    margin-bottom: var(--space-8);
   }
 }
 
