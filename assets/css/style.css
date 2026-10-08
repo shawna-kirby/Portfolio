@@ -463,6 +463,12 @@ section {
   margin: 0 0 var(--space-4);
 }
 
+/* Image-only cards (About page "Off the clock"): square photos, no captions. */
+.work-card--static .work-card-media {
+  aspect-ratio: 1 / 1;
+  margin-bottom: 0;
+}
+
 /* ---------- Portfolio: focus areas (4-up overview) ---------- */
 
 .portfolio-intro {
