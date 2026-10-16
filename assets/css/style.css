@@ -295,7 +295,7 @@ section {
   font-size: 21px;
   line-height: 1.5;
   color: var(--color-secondary);
-  max-width: 50ch;
+  max-width: 60ch;
   margin: 0 0 var(--space-7);
 }
 
@@ -472,7 +472,6 @@ section {
 /* ---------- Portfolio: focus areas (4-up overview) ---------- */
 
 .portfolio-intro {
-  max-width: 780px;
   margin-bottom: var(--space-9);
 }
 
@@ -484,14 +483,17 @@ section {
   font-size: clamp(44px, 6.8vw, 88px);
   line-height: 0.98;
   letter-spacing: -0.01em;
-  margin: 0 0 var(--space-5);
+  margin: 0 0 var(--space-7);
+  max-width: 15ch;
 }
 
+/* Same type and measure as .hero p.lede on the home page. */
 .portfolio-intro p {
   font-family: var(--font-serif);
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 21px;
+  line-height: 1.5;
   color: var(--color-secondary);
+  max-width: 60ch;
   margin: 0;
 }
 
@@ -984,6 +986,7 @@ section {
 }
 
 .lock-form {
+  max-width: 780px;
   margin-top: var(--space-7);
 }
 
