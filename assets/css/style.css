@@ -936,6 +936,13 @@ section {
 
 /* ---------- About photo layout ---------- */
 
+/* Team photo below the pull quote: spans the full content width. */
+.about-team-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .about-hero-layout {
   display: grid;
   grid-template-columns: 1fr 453px;
