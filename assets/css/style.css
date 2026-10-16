@@ -49,7 +49,7 @@
 
   /* Layout rhythm — named uses of the scale. Desktop values here; on phones
      (max-width: 720px) each steps down the same scale. */
-  --page-top: var(--space-10);
+  --page-top: var(--space-9);
   --section-space-lg: var(--space-11);
   --section-space: var(--space-9);
   --section-space-sm: var(--space-8);
@@ -328,25 +328,30 @@ section {
 }
 
 /* Home: copy on the left, photo on the right. The photo file is mirrored
-   so Shawna faces the headline. */
+   so Shawna faces the headline. On desktop the photo stretches to the
+   copy's height, so its bottom edge lines up with the CTA's. Its top is
+   pushed down to the headline's cap height (0.136em in Inter at line-height
+   1) so it lines up with the top of the letters, not the line box. */
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-  gap: var(--space-8);
-  align-items: center;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 5fr);
+  gap: var(--space-7);
 }
 
 .hero-media {
-  aspect-ratio: 4 / 5;
+  position: relative;
+  margin-top: calc(var(--text-display) * 0.136);
   background: var(--color-panel);
   overflow: hidden;
 }
 
 .hero-media img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% center;
+  object-position: 62% 30%;
 }
 
 @media (max-width: 900px) {
@@ -357,6 +362,7 @@ section {
 
   .hero-media {
     aspect-ratio: 3 / 2;
+    margin-top: 0;
   }
 }
 
@@ -804,7 +810,7 @@ section {
 /* ---------- Simple page hero (About / Work index / Case study) ---------- */
 
 .page-hero {
-  padding: var(--space-9) 0 0;
+  padding: var(--page-top) 0 0;
 }
 
 .page-hero .eyebrow {
@@ -1311,7 +1317,7 @@ html.has-lightbox {
    content in view — no screen-high stretches of empty space. */
 @media (max-width: 720px) {
   :root {
-    --page-top: var(--space-8);
+    --page-top: var(--space-7);
     --section-space-lg: var(--space-8);
     --section-space: var(--space-7);
     --section-space-sm: var(--space-6);
