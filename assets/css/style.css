@@ -16,6 +16,16 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
 
+  /* Body text styles — every paragraph on the site uses one of these three
+     (all serif, --color-secondary). Lead: the intro under a page headline.
+     Body: running paragraphs. Small: card and caption text. */
+  --text-lead: 21px;
+  --text-lead-leading: 1.5;
+  --text-body: 18px;
+  --text-body-leading: 1.6;
+  --text-small: 15px;
+  --text-small-leading: 1.5;
+
   /* Spacing scale — every margin, padding and gap on the site uses one of
      these steps (8-point grid, plus 4 and 12 for tight typographic pairs). */
   --space-1: 4px;
@@ -247,7 +257,8 @@ section {
 
 .section-head--stacked p {
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: var(--text-body);
+  line-height: var(--text-body-leading);
   color: var(--color-secondary);
   margin: var(--space-3) 0 0;
 }
@@ -292,8 +303,8 @@ section {
 
 .hero p.lede {
   font-family: var(--font-serif);
-  font-size: 21px;
-  line-height: 1.5;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead-leading);
   color: var(--color-secondary);
   max-width: 60ch;
   margin: 0 0 var(--space-7);
@@ -365,8 +376,8 @@ section {
 
 .strength-card p {
   font-family: var(--font-serif);
-  font-size: 18px;
-  line-height: 1.5;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead-leading);
   color: var(--color-secondary);
   margin: 0 0 var(--space-6);
 }
@@ -458,8 +469,9 @@ section {
 
 .work-card p {
   font-family: var(--font-serif);
+  font-size: var(--text-small);
+  line-height: var(--text-small-leading);
   color: var(--color-secondary);
-  font-size: 15px;
   margin: 0 0 var(--space-4);
 }
 
@@ -490,8 +502,8 @@ section {
 /* Same type and measure as .hero p.lede on the home page. */
 .portfolio-intro p {
   font-family: var(--font-serif);
-  font-size: 21px;
-  line-height: 1.5;
+  font-size: var(--text-lead);
+  line-height: var(--text-lead-leading);
   color: var(--color-secondary);
   max-width: 60ch;
   margin: 0;
@@ -554,8 +566,8 @@ section {
 
 .area-sub {
   font-family: var(--font-serif);
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: var(--text-small);
+  line-height: var(--text-small-leading);
   color: var(--color-secondary);
   margin: 0 0 var(--space-5);
 }
@@ -678,8 +690,9 @@ section {
 
 .about-teaser p {
   font-family: var(--font-serif);
+  font-size: var(--text-body);
+  line-height: var(--text-body-leading);
   color: var(--color-secondary);
-  font-size: 19px;
   max-width: 56ch;
   margin: var(--space-5) 0 var(--space-6);
 }
@@ -774,9 +787,10 @@ section {
 
 .page-hero p {
   font-family: var(--font-serif);
+  font-size: var(--text-lead);
+  line-height: var(--text-lead-leading);
   color: var(--color-secondary);
   max-width: 58ch;
-  font-size: 19px;
   margin: 0;
 }
 
@@ -798,8 +812,8 @@ section {
 
 .bio-copy {
   font-family: var(--font-serif);
-  font-size: 19px;
-  line-height: 1.6;
+  font-size: var(--text-body);
+  line-height: var(--text-body-leading);
   color: var(--color-secondary);
   margin: 0;
 }
@@ -918,8 +932,9 @@ section {
 
 .case-study-section p {
   font-family: var(--font-serif);
+  font-size: var(--text-body);
+  line-height: var(--text-body-leading);
   color: var(--color-secondary);
-  font-size: 18px;
 }
 
 /* ---------- Responsive ---------- */
@@ -1174,8 +1189,8 @@ html.has-lightbox {
 
 .lightbox-desc {
   font-family: var(--font-serif);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: var(--text-small);
+  line-height: var(--text-small-leading);
   color: var(--color-secondary);
   margin: 0 0 var(--space-7);
 }
