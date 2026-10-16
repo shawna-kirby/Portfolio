@@ -40,7 +40,7 @@ PRIVATE = os.path.join(ROOT, "_private")
 ITERATIONS = 310000
 
 GATE = """<main class="lock-gate" data-protected data-checking>
-    <div class="container">
+    <div class="container hero-layout">
       <div class="portfolio-intro">
       <h1>My work is best shared in context</h1>
       <p>
@@ -63,6 +63,10 @@ GATE = """<main class="lock-gate" data-protected data-checking>
         <style>.lock-gate[data-checking] { visibility: visible; }</style>
         <p>JavaScript is needed to unlock this page.</p>
       </noscript>
+      </div>
+      <div class="hero-media">
+        <img src="%(prefix)sassets/img/GTKM.png" alt="QuickBooks onboarding screen suggesting next setup steps" />
+        <img src="%(prefix)sassets/img/Hero.png" alt="QuickBooks recurring payments setup screen" />
       </div>
     </div>
   </main>

@@ -197,6 +197,7 @@ a {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center; /* keeps the label centered when a button stretches full width */
   gap: var(--space-2);
   padding: var(--space-4) var(--space-6);
   font-size: 11px;
@@ -1047,7 +1048,60 @@ section {
 /* ---------- Password gate (Portfolio + case studies) ---------- */
 
 .lock-gate {
-  padding: var(--page-top) 0 0;
+  padding: var(--page-top) 0 var(--space-9);
+}
+
+/* The gate shares the home hero layout (.hero-layout / .hero-media): copy
+   left, teaser image right, bottom edges aligned. The intro's own bottom
+   margin would stretch the image past the button, so the gate pads instead. */
+.lock-gate .portfolio-intro {
+  margin-bottom: 0;
+}
+
+/* Two teaser screenshots, stacked. Each PNG (1464 x 928) has a transparent
+   margin around its frame (52px sides, 48px top, 44px bottom), so they're
+   sized and placed by the visible frame: frame tops/bottoms line up with the
+   headline and the button, a --space-4 gap sits between the frames, and the
+   frames' right edges sit on the column edge. --frame is one frame's height;
+   cqh is the column's height (the column is a size container). */
+.lock-gate .hero-media {
+  container-type: size;
+  background: none;
+  overflow: visible;
+}
+
+.lock-gate .hero-media img {
+  --frame: calc((100cqh - var(--space-4)) / 2);
+  inset: auto;
+  right: calc(var(--frame) * -52 / 836);
+  width: auto;
+  height: calc(var(--frame) * 928 / 836);
+  object-fit: fill;
+}
+
+.lock-gate .hero-media img:first-child {
+  top: calc(var(--frame) * -48 / 836);
+}
+
+.lock-gate .hero-media img:last-child {
+  bottom: calc(var(--frame) * -44 / 836);
+}
+
+@media (max-width: 900px) {
+  .lock-gate .hero-media {
+    container-type: normal;
+    aspect-ratio: auto;
+  }
+
+  /* Stacked full width: widen past the column by the transparent side
+     margins so the frames line up with the text edges. */
+  .lock-gate .hero-media img {
+    position: static;
+    width: calc(100% * 1464 / 1360);
+    max-width: none;
+    height: auto;
+    margin-left: calc(-100% * 52 / 1360);
+  }
 }
 
 .lock-gate[data-checking] {
@@ -1061,6 +1115,7 @@ section {
 }
 
 .lock-form {
+  position: relative;
   max-width: 780px;
   margin-top: var(--space-7);
 }
@@ -1136,7 +1191,11 @@ section {
   }
 }
 
+/* Sits below the form without adding height, so the teaser image beside
+   it doesn't grow when the error appears. */
 .lock-form .lock-error {
+  position: absolute;
+  top: 100%;
   margin-top: var(--space-3);
   font-family: var(--font-sans);
   font-size: 14px;
