@@ -44,9 +44,9 @@ GATE = """<main class="lock-gate" data-protected data-checking>
       <div class="portfolio-intro">
       <h1>My work is best shared in context</h1>
       <p>
-        I welcome the opportunity to share in live conversation the pixels, decisions,
-        tradeoffs, and outcomes I&rsquo;ve delivered. Have a password? Enter it below. Otherwise,
-        <a href="%(prefix)scontact.html">get in touch</a> for an introductory conversation.
+        I welcome the opportunity to discuss pixels, decisions, tradeoffs, and outcomes
+        I&rsquo;ve delivered in a live conversation. Have a password? Enter it below. Otherwise,
+        please <a href="%(prefix)scontact.html">get in touch</a> for an introductory call.
       </p>
       <form class="lock-form">
         <label for="lock-password" class="eyebrow">Password</label>
