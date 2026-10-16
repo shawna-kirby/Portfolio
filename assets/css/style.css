@@ -327,6 +327,39 @@ section {
   gap: var(--space-6);
 }
 
+/* Home: copy on the left, photo on the right. The photo file is mirrored
+   so Shawna faces the headline. */
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.hero-media {
+  aspect-ratio: 4 / 5;
+  background: var(--color-panel);
+  overflow: hidden;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% center;
+}
+
+@media (max-width: 900px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-7);
+  }
+
+  .hero-media {
+    aspect-ratio: 3 / 2;
+  }
+}
+
 /* ---------- Dual strengths (IC + Leader) ---------- */
 
 .strengths-grid {
