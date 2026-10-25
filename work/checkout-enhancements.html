@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/css/style.css?v=3d02cc87" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=5795b91e" />
 </head>
 <body>
 
@@ -44,8 +44,11 @@
         <div class="lock-row">
           <input id="lock-password" type="password" autocomplete="current-password" required />
           <button type="submit" class="btn btn-primary" disabled>
-            <span class="btn-spinner" aria-hidden="true"></span>
-            <span class="btn-label">View case studies</span>
+            <span class="btn-content">
+              <span class="btn-spinner" aria-hidden="true"></span>
+              <span class="btn-label">View case studies</span>
+            </span>
+            <span class="btn-sizer" aria-hidden="true"><span class="btn-spinner"></span>Loading case studies</span>
           </button>
         </div>
         <p class="lock-error" role="alert" hidden>That password didn&rsquo;t work. Try again.</p>
@@ -62,8 +65,8 @@
     </div>
   </main>
 
-  <script type="application/json" id="protected-payload">{"salt": "qq+3RTbNfLX8QheRav3ZuQ==", "iterations": 310000, "iv": "gOPa4nhL/a7tiAj67hNXLA==", "ciphertext": "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", "mac": "SUSIroHCjn8g3KblZNlcwNROwZTX0NwMKBZMxlQJTKo="}</script>
-  <script src="../assets/js/unlock.js?v=f6d19a00"></script>
+  <script type="application/json" id="protected-payload">{"salt": "mUXGBKtY6HMp2N+FaMh7nw==", "iterations": 310000, "iv": "VQJgyTStQg00MXl+2BylIg==", "ciphertext": "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", "mac": "WK1RG8NW20ntM+4uGx0MIzSGejFj2ktgNPUkn9DKFhg="}</script>
+  <script src="../assets/js/unlock.js?v=b97b3598"></script>
 
   <footer class="site-footer">
     <div class="container">

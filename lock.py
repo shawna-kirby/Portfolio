@@ -53,8 +53,11 @@ GATE = """<main class="lock-gate" data-protected data-checking>
         <div class="lock-row">
           <input id="lock-password" type="password" autocomplete="current-password" required />
           <button type="submit" class="btn btn-primary" disabled>
-            <span class="btn-spinner" aria-hidden="true"></span>
-            <span class="btn-label">View case studies</span>
+            <span class="btn-content">
+              <span class="btn-spinner" aria-hidden="true"></span>
+              <span class="btn-label">View case studies</span>
+            </span>
+            <span class="btn-sizer" aria-hidden="true"><span class="btn-spinner"></span>Loading case studies</span>
           </button>
         </div>
         <p class="lock-error" role="alert" hidden>That password didn&rsquo;t work. Try again.</p>

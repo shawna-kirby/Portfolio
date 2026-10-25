@@ -15,6 +15,7 @@
   const button = form.querySelector("button");
   const label = button.querySelector(".btn-label");
   const idleLabel = label.textContent;
+  const loadingLabel = button.querySelector(".btn-sizer").textContent.trim();
   // Keep the loading state up long enough to read as a transition, not a flicker.
   const MIN_LOADING_MS = 600;
 
@@ -91,7 +92,7 @@
     if (!input.value) return;
     button.disabled = true;
     button.setAttribute("aria-busy", "true");
-    label.textContent = "Loading case studies…";
+    label.textContent = loadingLabel;
     error.hidden = true;
     const minDelay = new Promise((resolve) => setTimeout(resolve, MIN_LOADING_MS));
 
