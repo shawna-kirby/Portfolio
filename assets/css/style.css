@@ -599,14 +599,17 @@ section {
   height: auto;
 }
 
-/* Focus area name — the primary layer of the page. */
+/* Focus area name — same type as the About page card headings
+   ("As a leader"). */
 .area-col h2 {
   font-family: var(--font-sans);
-  font-size: var(--text-title);
-  line-height: var(--text-title-leading);
-  letter-spacing: var(--text-title-tracking);
-  font-weight: 600;
-  margin: 0 0 var(--space-2);
+  font-size: var(--text-subhead);
+  line-height: 1.4;
+  letter-spacing: var(--text-subhead-tracking);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-3);
 }
 
 .area-sub {
