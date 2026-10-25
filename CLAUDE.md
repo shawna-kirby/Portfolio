@@ -24,6 +24,13 @@ Then visit `http://localhost:8765/index.html`.
 - `about.html` — bio / leadership philosophy page
 - `assets/css/style.css` — all shared styles (single stylesheet, no preprocessor)
 - `assets/js/main.js` — the mobile nav toggle; shared across all pages
+- `assets/js/lightbox.js` — click-to-enlarge for case study screenshots (every `.case-study-figures img`); loaded on each `work/*.html` page
+
+## Case study images
+
+- Screenshots go in a `.case-study-figures` block at the top of the section they illustrate. The text column is 656px wide, so export from Figma at 656px wide **@2x (1312px)**, with no padding.
+- The site adds a soft shadow (`--shadow-soft`); for exports with a shadow/glow baked in, add `has-own-shadow` to the `.case-study-figures` block.
+- Every image opens in the lightbox. For a sharper lightbox view, also save a 2624px (@4x) copy in `assets/img/full/` with the same filename and point to it with `data-full="../assets/img/full/<name>.png"`. The page only loads the 1312px `src`; the large copy loads on click.
 - `ShawnaKirby_Resume_2026.pdf` — linked directly from nav/footer on every page
 
 ## Password-protected pages

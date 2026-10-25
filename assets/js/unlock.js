@@ -55,6 +55,8 @@
   function reveal(html) {
     gate.insertAdjacentHTML("beforebegin", html);
     gate.remove();
+    // Lets scripts that enhance page content (lightbox.js) set it up now.
+    document.dispatchEvent(new Event("content:revealed"));
     if (location.hash) {
       const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
       if (target) target.scrollIntoView();

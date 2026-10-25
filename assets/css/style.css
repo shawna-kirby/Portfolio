@@ -1173,6 +1173,28 @@ section {
   filter: drop-shadow(var(--shadow-soft));
 }
 
+/* For exports with their own shadow or glow baked in (from Figma). */
+.case-study-figures.has-own-shadow img {
+  filter: none;
+}
+
+/* Stand-in for a screenshot that hasn't been made yet; swap for an <img>.
+   Sized like the real thing: full column width (656px max), 4:3. */
+.figure-placeholder {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: var(--color-panel);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-secondary);
+}
+
 .case-study-section li + li {
   margin-top: var(--space-2);
 }
@@ -1408,21 +1430,34 @@ section {
   }
 }
 
-/* ---------- Off the clock: gallery lightbox (assets/js/gallery.js) ---------- */
+/* ---------- Case study screenshot lightbox (assets/js/lightbox.js) ---------- */
+
+/* Screenshots open full size on click; off on phones (see lightbox.js). */
+@media (min-width: 721px) {
+  .case-study-figures img {
+    cursor: zoom-in;
+  }
+}
+
+.case-study-figures img:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 4px;
+}
 
 html.has-lightbox {
   overflow: hidden;
 }
 
+/* Top bar (case study name, Close) at nav height, then the screenshot as
+   large as the window allows, then the count and Previous / Next. */
 .lightbox {
   position: fixed;
   inset: 0;
   z-index: 100;
   display: grid;
   grid-template-rows: var(--nav-height) minmax(0, 1fr);
-  padding: 0 var(--space-6) var(--space-7);
+  padding: 0 var(--space-6) var(--space-6);
   background: var(--color-paper);
-  overflow-y: auto;
   opacity: 0;
   transition: opacity 0.25s ease;
 }
@@ -1450,14 +1485,13 @@ html.has-lightbox {
 
 .lightbox-stage {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
-  gap: var(--space-8);
-  align-items: end;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: var(--space-5);
   min-height: 0;
+  margin-bottom: 0;
 }
 
 .lightbox-media {
-  height: 100%;
   min-height: 0;
   display: flex;
   align-items: center;
@@ -1475,54 +1509,21 @@ html.has-lightbox {
   opacity: 0;
 }
 
-.lightbox-placeholder {
-  width: min(640px, 100%);
-  aspect-ratio: 4 / 3;
+.lightbox-caption {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--color-panel);
-  font-family: var(--font-serif);
-  font-size: 14px;
-  color: var(--color-secondary);
+  justify-content: space-between;
 }
 
-.lightbox-count {
-  display: block;
-  margin-bottom: var(--space-5);
-}
-
-.lightbox-title {
-  font-family: var(--font-sans);
-  font-size: var(--text-subhead);
-  line-height: 1.4;
-  letter-spacing: var(--text-subhead-tracking);
-  font-weight: 400;
-  text-transform: uppercase;
-  color: var(--color-ink);
-  margin: 0 0 var(--space-2);
-}
-
-.lightbox-meta {
-  display: block;
-  margin: 0 0 var(--space-4);
-}
-
-.lightbox-desc {
-  font-family: var(--font-serif);
-  font-size: var(--text-body);
-  line-height: var(--text-body-leading);
-  color: var(--color-secondary);
-  margin: 0 0 var(--space-7);
+.lightbox-count[hidden],
+.lightbox-nav[hidden] {
+  display: none;
 }
 
 .lightbox-nav {
   display: flex;
   gap: var(--space-6);
-}
-
-.lightbox-nav[hidden] {
-  display: none;
+  margin-left: auto;
 }
 
 .lightbox-link {
@@ -1546,23 +1547,6 @@ html.has-lightbox {
 .lightbox-link:focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 4px;
-}
-
-@media (max-width: 720px) {
-  .lightbox {
-    grid-template-rows: var(--nav-height) auto;
-    padding: 0 var(--space-6) var(--space-6);
-  }
-
-  .lightbox-stage {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-    align-items: start;
-  }
-
-  .lightbox-media img {
-    max-height: 60vh;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
