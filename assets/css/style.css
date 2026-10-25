@@ -583,30 +583,13 @@ section {
 }
 
 .area-media {
-  aspect-ratio: 4 / 3;
-  background: var(--color-panel);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-secondary);
-  font-family: var(--font-serif);
-  font-size: 13px;
-  overflow: hidden;
   margin-bottom: var(--space-5);
 }
 
 .area-media img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.area-col:nth-child(2) .area-media {
-  background: var(--color-panel-deep);
-}
-
-.area-col:nth-child(3) .area-media {
-  background: #ecece6;
+  height: auto;
 }
 
 /* Focus area name — the primary layer of the page. */
