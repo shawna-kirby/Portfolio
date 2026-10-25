@@ -1042,11 +1042,20 @@ section {
   margin: 0 0 var(--space-4);
 }
 
-.case-study-section p {
+.case-study-section p,
+.case-study-section ul {
   font-family: var(--font-serif);
   font-size: var(--text-body);
   line-height: var(--text-body-leading);
   color: var(--color-secondary);
+}
+
+.case-study-section ul {
+  padding-left: var(--space-5);
+}
+
+.case-study-section li + li {
+  margin-top: var(--space-2);
 }
 
 /* ---------- Responsive ---------- */
