@@ -577,30 +577,26 @@ section {
   row-gap: var(--section-space);
 }
 
-/* Large image on one side, the area's name, subhead and case studies
-   centered vertically on the other (the empty 1fr rows above and below
-   do the centering). Sides alternate row to row. */
+/* Large image on one side, the area's name, subhead and case studies on
+   the other, top-aligned with the image (the last 1fr row takes up the
+   rest of the image's height). Sides alternate row to row. */
 .area-col {
   display: grid;
   grid-template-columns: 7fr 5fr;
-  grid-template-rows: 1fr auto auto auto 1fr;
+  grid-template-rows: auto auto 1fr;
   grid-template-areas:
-    "media ."
     "media name"
     "media sub"
-    "media cases"
-    "media .";
+    "media cases";
   column-gap: var(--space-8);
 }
 
 .area-col:nth-child(even) {
   grid-template-columns: 5fr 7fr;
   grid-template-areas:
-    ". media"
     "name media"
     "sub media"
-    "cases media"
-    ". media";
+    "cases media";
 }
 
 .area-media {
@@ -614,9 +610,12 @@ section {
 }
 
 /* Focus area name — same type as the About page card headings
-   ("As a leader"). */
+   ("As a leader"). Pulled up by the space above Inter's capitals
+   (0.357em at line-height 1.4) so the cap tops sit on the image's top
+   edge, as the home photo does with its headline. */
 .area-col h2 {
   grid-area: name;
+  margin-top: calc(var(--text-subhead) * -0.357);
   font-family: var(--font-sans);
   font-size: var(--text-subhead);
   line-height: 1.4;
@@ -624,7 +623,7 @@ section {
   font-weight: 400;
   text-transform: uppercase;
   color: var(--color-ink);
-  margin: 0 0 var(--space-3);
+  margin-bottom: var(--space-3);
 }
 
 .area-sub {
@@ -636,13 +635,21 @@ section {
   margin: 0 0 var(--space-5);
 }
 
-/* Case studies — deliberately secondary to the area above. */
+/* Case studies — deliberately secondary to the area above, set off by a
+   short rule one spacing step (--space-7) wide. */
 .area-cases {
   grid-area: cases;
   list-style: none;
   margin: 0;
-  padding: var(--space-4) 0 0;
+  padding: 0;
+}
+
+.area-cases::before {
+  content: '';
+  display: block;
+  width: var(--space-7);
   border-top: 1px solid var(--color-panel-deep);
+  margin-bottom: var(--space-4);
 }
 
 .area-cases li + li {
