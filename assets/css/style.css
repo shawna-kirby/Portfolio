@@ -596,6 +596,11 @@ section {
   scroll-margin-top: calc(var(--nav-height) + var(--space-6));
 }
 
+/* An area switched off with the hidden attribute (e.g. Craft for now). */
+.area-col[hidden] {
+  display: none;
+}
+
 .area-col:nth-child(even) {
   grid-template-columns: 5fr 7fr;
   grid-template-areas:
