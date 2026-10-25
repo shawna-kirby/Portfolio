@@ -647,15 +647,21 @@ section {
   line-height: var(--text-body-leading);
   color: var(--color-secondary);
   margin: 0 0 var(--space-5);
+  /* Trimmed to the baseline so the gap above the rule is exactly
+     --space-5 (see .area-cases li:first-child). */
+  text-box: trim-end cap alphabetic;
 }
 
 /* Case studies — deliberately secondary to the area above, set off by a
-   short rule one spacing step (--space-7) wide. */
+   short rule one spacing step (--space-7) wide. The font size sits on
+   the list rather than the links so the first item's trim measures the
+   links' own cap height. */
 .area-cases {
   grid-area: cases;
   list-style: none;
   margin: 0;
   padding: 0;
+  font-size: var(--text-body);
 }
 
 .area-cases::before {
@@ -663,7 +669,13 @@ section {
   display: block;
   width: var(--space-7);
   border-top: 1px solid var(--color-panel-deep);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+/* Trimmed to the cap tops, so the visible gap below the rule matches the
+   one above it: --space-5 from subhead baseline to rule to link caps. */
+.area-cases li:first-child {
+  text-box: trim-start cap alphabetic;
 }
 
 .area-cases li + li {
@@ -671,7 +683,6 @@ section {
 }
 
 .area-cases a {
-  font-size: var(--text-body);
   color: var(--color-secondary);
   text-decoration: none;
   transition: color 0.15s ease;
