@@ -63,11 +63,18 @@
   box-sizing: border-box;
 }
 
+/* Always reserve the scrollbar's space, so pages that scroll (About) and
+   pages that don't line up at the same width. */
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
+/* At least a window tall, so on short pages there's room for the footer
+   to sit at the bottom of the window (see .site-footer). */
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0;
   background: var(--color-paper);
   color: var(--color-ink);
@@ -739,6 +746,11 @@ section {
   color: var(--color-paper);
   padding: var(--space-8) 0;
   margin-top: var(--section-space-lg);
+  /* On pages shorter than the window, slides the footer down to the bottom
+     of the (window-tall) body; on longer pages it stays where it is. Sticky
+     rather than a flex column, so the page's margins still collapse. */
+  position: sticky;
+  top: 100vh;
 }
 
 .footer-grid {
