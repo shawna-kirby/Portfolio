@@ -1054,6 +1054,22 @@ section {
   padding-left: var(--space-5);
 }
 
+/* Screenshots at the top of a section, above its label, stacked full
+   width of the text column. The gap below (--space-7) is a step tighter
+   than the gap between sections (--space-8), so they read as part of
+   the section they open. Same soft shadow as the Portfolio screenshots. */
+.case-study-figures {
+  display: grid;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.case-study-figures img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(var(--shadow-soft));
+}
+
 .case-study-section li + li {
   margin-top: var(--space-2);
 }
