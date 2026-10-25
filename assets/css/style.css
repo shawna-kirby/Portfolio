@@ -922,7 +922,8 @@ section {
 }
 
 /* Breadcrumb above a case study title: Portfolio / Section / Page.
-   Same type and spacing as .back-link; the current page is in ink. */
+   Same type and spacing as .back-link; the current page is red, like the
+   active item in the top nav. */
 .breadcrumb {
   margin-bottom: var(--space-7);
 }
@@ -958,7 +959,7 @@ section {
 }
 
 .breadcrumb [aria-current="page"] {
-  color: var(--color-ink);
+  color: var(--color-signal);
 }
 
 /* Previous / next case study, under the last section. Follows the order
@@ -967,9 +968,14 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
-  margin-top: var(--section-space);
+  margin-top: var(--space-7);
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-panel-deep);
+}
+
+/* The footer sits a step closer on case studies than elsewhere. */
+body:has(.case-nav) .site-footer {
+  margin-top: var(--section-space);
 }
 
 .case-nav-link {
@@ -1121,10 +1127,13 @@ section {
 
 /* ---------- Case study body ---------- */
 
+/* Case study rhythm: --space-7 between blocks (title, sections, the
+   previous/next links), --space-5 within a section (images), --space-4
+   from a section label to its text. */
 .case-study-body {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--space-7);
 }
 
 .case-study-section .eyebrow {
@@ -1151,6 +1160,13 @@ section {
   font-size: var(--text-body);
   line-height: var(--text-body-leading);
   color: var(--color-secondary);
+  margin: 0;
+}
+
+.case-study-section p + p,
+.case-study-section p + ul,
+.case-study-section ul + p {
+  margin-top: var(--space-4);
 }
 
 .case-study-section ul {
@@ -1158,13 +1174,14 @@ section {
 }
 
 /* Screenshots at the top of a section, above its label, stacked full
-   width of the text column. The gap below (--space-7) is a step tighter
-   than the gap between sections (--space-8), so they read as part of
-   the section they open. Same soft shadow as the Portfolio screenshots. */
+   width of the text column. The gaps between and below them (--space-5)
+   are tighter than the gap between sections (--space-7), so they read as
+   part of the section they open. Same soft shadow as the Portfolio
+   screenshots. */
 .case-study-figures {
   display: grid;
   gap: var(--space-5);
-  margin-bottom: var(--space-7);
+  margin-bottom: var(--space-5);
 }
 
 .case-study-figures img {
