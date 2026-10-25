@@ -571,26 +571,40 @@ section {
   margin: 0;
 }
 
-/* No row gap: the columns share rows through subgrid, so a row gap would
-   land between each area's name and subhead. Space between wrapped rows
-   of areas comes from margin under the case lists instead. */
+/* One row per area, stacked down the page. */
 .area-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: var(--space-6);
+  row-gap: var(--section-space);
 }
 
-/* Each column spans four shared rows (image, name, subhead, cases) so
-   the rules line up across columns even when a subhead wraps. */
+/* Large image on one side, the area's name, subhead and case studies
+   centered vertically on the other (the empty 1fr rows above and below
+   do the centering). Sides alternate row to row. */
 .area-col {
   display: grid;
-  grid-row: span 4;
-  grid-template-rows: subgrid;
-  row-gap: 0;
+  grid-template-columns: 7fr 5fr;
+  grid-template-rows: 1fr auto auto auto 1fr;
+  grid-template-areas:
+    "media ."
+    "media name"
+    "media sub"
+    "media cases"
+    "media .";
+  column-gap: var(--space-8);
+}
+
+.area-col:nth-child(even) {
+  grid-template-columns: 5fr 7fr;
+  grid-template-areas:
+    ". media"
+    "name media"
+    "sub media"
+    "cases media"
+    ". media";
 }
 
 .area-media {
-  margin-bottom: var(--space-5);
+  grid-area: media;
 }
 
 .area-media img {
@@ -602,6 +616,7 @@ section {
 /* Focus area name — same type as the About page card headings
    ("As a leader"). */
 .area-col h2 {
+  grid-area: name;
   font-family: var(--font-sans);
   font-size: var(--text-subhead);
   line-height: 1.4;
@@ -613,6 +628,7 @@ section {
 }
 
 .area-sub {
+  grid-area: sub;
   font-family: var(--font-serif);
   font-size: var(--text-body);
   line-height: var(--text-body-leading);
@@ -622,6 +638,7 @@ section {
 
 /* Case studies — deliberately secondary to the area above. */
 .area-cases {
+  grid-area: cases;
   list-style: none;
   margin: 0;
   padding: var(--space-4) 0 0;
@@ -668,24 +685,21 @@ section {
   color: var(--color-signal);
 }
 
-@media (max-width: 900px) {
-  .area-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .area-col:nth-child(-n+2) .area-cases {
-    margin-bottom: var(--space-8);
-  }
-
-}
-
-@media (max-width: 560px) {
-  .area-grid {
+/* Phones: image on top, then the text. */
+@media (max-width: 720px) {
+  .area-col,
+  .area-col:nth-child(even) {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas:
+      "media"
+      "name"
+      "sub"
+      "cases";
   }
 
-  .area-col:not(:last-child) .area-cases {
-    margin-bottom: var(--space-8);
+  .area-media {
+    margin-bottom: var(--space-5);
   }
 }
 
