@@ -180,6 +180,8 @@ a {
   font-weight: 700;
 }
 
+/* Selected state, used everywhere something marks "you are here" (this
+   and the breadcrumb): red and bold, so it doesn't rely on color alone. */
 .nav-links a[aria-current="page"] {
   color: var(--color-signal);
   font-weight: 700;
@@ -927,8 +929,8 @@ section {
 }
 
 /* Breadcrumb above a case study title: Portfolio / Section / Page.
-   Same type and spacing as .back-link; the current page is red, like the
-   active item in the top nav. */
+   Same type and spacing as .back-link; the current page uses the selected
+   state from the top nav (red, bold). */
 .breadcrumb {
   margin-bottom: var(--space-7);
 }
@@ -965,6 +967,7 @@ section {
 
 .breadcrumb [aria-current="page"] {
   color: var(--color-signal);
+  font-weight: 700;
 }
 
 /* Previous / next case study, under the last section. Follows the order
