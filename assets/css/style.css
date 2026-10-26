@@ -582,15 +582,16 @@ section {
   row-gap: var(--section-space);
 }
 
-/* Large image on one side, the area's heading and case studies on the
-   other, top-aligned with the image (the 1fr row takes up the rest of
-   the image's height). Sides alternate row to row. */
+/* Large image on one side; on the other, the area's heading, its
+   challenge and its case studies, top-aligned with the image (the 1fr row
+   takes up the rest of the image's height). Sides alternate row to row. */
 .area-col {
   display: grid;
   grid-template-columns: 7fr 5fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   grid-template-areas:
     "media name"
+    "media challenge"
     "media cases";
   column-gap: var(--space-8);
   /* Breadcrumb links land here (#bill-pay etc.); clear the sticky nav. */
@@ -606,6 +607,7 @@ section {
   grid-template-columns: 5fr 7fr;
   grid-template-areas:
     "name media"
+    "challenge media"
     "cases media";
 }
 
@@ -638,7 +640,7 @@ section {
   font-weight: 400;
   text-transform: uppercase;
   color: var(--color-ink);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 @supports (text-box: trim-both cap alphabetic) {
@@ -646,6 +648,19 @@ section {
     margin-top: 0;
     text-box: trim-both cap alphabetic;
   }
+}
+
+/* The challenge — same type as a case study paragraph, --space-4 under the
+   heading like a case study label and its text. Trimmed to the baseline
+   so the gap down to the rule is exactly --space-5. */
+.area-challenge {
+  grid-area: challenge;
+  font-family: var(--font-serif);
+  font-size: var(--text-body);
+  line-height: var(--text-body-leading);
+  color: var(--color-secondary);
+  margin: 0 0 var(--space-5);
+  text-box: trim-end cap alphabetic;
 }
 
 /* Case studies — deliberately secondary to the area above, set off by a
@@ -669,7 +684,7 @@ section {
 }
 
 /* Trimmed to the cap tops, so the visible gap below the rule matches the
-   one above it: --space-5 from heading baseline to rule to link caps. */
+   one above it: --space-5 from challenge baseline to rule to link caps. */
 .area-cases li:first-child {
   text-box: trim-start cap alphabetic;
 }
@@ -722,6 +737,7 @@ section {
     grid-template-areas:
       "media"
       "name"
+      "challenge"
       "cases";
   }
 
