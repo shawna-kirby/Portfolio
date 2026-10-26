@@ -582,16 +582,15 @@ section {
   row-gap: var(--section-space);
 }
 
-/* Large image on one side, the area's name, subhead and case studies on
-   the other, top-aligned with the image (the last 1fr row takes up the
-   rest of the image's height). Sides alternate row to row. */
+/* Large image on one side, the area's heading and case studies on the
+   other, top-aligned with the image (the 1fr row takes up the rest of
+   the image's height). Sides alternate row to row. */
 .area-col {
   display: grid;
   grid-template-columns: 7fr 5fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr;
   grid-template-areas:
     "media name"
-    "media sub"
     "media cases";
   column-gap: var(--space-8);
   /* Breadcrumb links land here (#bill-pay etc.); clear the sticky nav. */
@@ -607,7 +606,6 @@ section {
   grid-template-columns: 5fr 7fr;
   grid-template-areas:
     "name media"
-    "sub media"
     "cases media";
 }
 
@@ -625,10 +623,11 @@ section {
 }
 
 /* Focus area name — same type as the About page card headings
-   ("As a leader"). Its cap tops sit on the image's top edge: text-box
-   trims the line box to the capitals using each browser's own font
-   metrics; older browsers get a fixed pull-up (the space above Inter's
-   capitals, 0.357em at line-height 1.4). */
+   ("As a leader"). Its cap tops
+   sit on the image's top edge: text-box trims the line box to the capitals
+   (and the baseline, for an exact --space-5 down to the rule) using each
+   browser's own font metrics; older browsers get a fixed pull-up (the
+   space above Inter's capitals, 0.357em at line-height 1.4). */
 .area-col h2 {
   grid-area: name;
   margin-top: calc(var(--text-subhead) * -0.357);
@@ -639,26 +638,14 @@ section {
   font-weight: 400;
   text-transform: uppercase;
   color: var(--color-ink);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-5);
 }
 
-@supports (text-box: trim-start cap alphabetic) {
+@supports (text-box: trim-both cap alphabetic) {
   .area-col h2 {
     margin-top: 0;
-    text-box: trim-start cap alphabetic;
+    text-box: trim-both cap alphabetic;
   }
-}
-
-.area-sub {
-  grid-area: sub;
-  font-family: var(--font-serif);
-  font-size: var(--text-body);
-  line-height: var(--text-body-leading);
-  color: var(--color-secondary);
-  margin: 0 0 var(--space-5);
-  /* Trimmed to the baseline so the gap above the rule is exactly
-     --space-5 (see .area-cases li:first-child). */
-  text-box: trim-end cap alphabetic;
 }
 
 /* Case studies — deliberately secondary to the area above, set off by a
@@ -682,7 +669,7 @@ section {
 }
 
 /* Trimmed to the cap tops, so the visible gap below the rule matches the
-   one above it: --space-5 from subhead baseline to rule to link caps. */
+   one above it: --space-5 from heading baseline to rule to link caps. */
 .area-cases li:first-child {
   text-box: trim-start cap alphabetic;
 }
@@ -735,7 +722,6 @@ section {
     grid-template-areas:
       "media"
       "name"
-      "sub"
       "cases";
   }
 
