@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unlocking access to Bill Pay — Shawna Kirby</title>
+  <meta name="description" content="[One-sentence description of this case study.]" />
+  <link rel="icon" type="image/png" href="../assets/img/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=3a698658" />
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/img/icon.png" alt="" class="nav-logo-mark" />
+        Shawna Kirby
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../work.html" aria-current="page">Portfolio</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="lock-gate" data-protected data-checking>
+    <div class="container hero-layout">
+      <div class="portfolio-intro">
+      <h1>My work is best shared in context</h1>
+      <p>
+        I welcome the opportunity to discuss pixels, decisions, tradeoffs, and outcomes
+        I&rsquo;ve delivered in a live conversation. Have a password? Enter it below. Otherwise,
+        please <a href="../contact.html">get in touch</a> for an introductory call.
+      </p>
+      <form class="lock-form">
+        <label for="lock-password" class="eyebrow">Password</label>
+        <div class="lock-row">
+          <input id="lock-password" type="password" autocomplete="current-password" required />
+          <button type="submit" class="btn btn-primary" disabled>
+            <span class="btn-content">
+              <span class="btn-spinner" aria-hidden="true"></span>
+              <span class="btn-label">View case studies</span>
+            </span>
+            <span class="btn-sizer" aria-hidden="true"><span class="btn-spinner"></span>Loading case studies</span>
+          </button>
+        </div>
+        <p class="lock-error" role="alert" hidden>That password didn&rsquo;t work. Try again.</p>
+      </form>
+      <noscript>
+        <style>.lock-gate[data-checking] { visibility: visible; }</style>
+        <p>JavaScript is needed to unlock this page.</p>
+      </noscript>
+      </div>
+      <div class="hero-media">
+        <img src="../assets/img/GTKM.png" alt="QuickBooks onboarding screen suggesting next setup steps" />
+        <img src="../assets/img/Hero.png" alt="QuickBooks recurring payments setup screen" />
+      </div>
+    </div>
+  </main>
+
+  <script type="application/json" id="protected-payload">{"salt": "lrpsuCKvr/QybJd5RPMoOw==", "iterations": 310000, "iv": "WSAec7eZdMuiymMpgvfQmA==", "ciphertext": "uLkGzdMF0kh7KjDaE5+O6IrStc4nUQGEvvnIwtNdrk2NlbO/hE8BJcAzVQHGEjNUBU7vOom+LmyoPR96CoRaDeO5YI005cUuyYxe2+9c2wTkgZTossE2r1GoXfB4+eSXyovUXKyLqcqx9aLJcg/J237AKs9gfuibWBvI5ijI8Kg8Pro2HZcLN/rg73CsNG7bDDlj8ujEa/OHxMg014Iz9zhVT1gBEY30aaPVe+C7JRM7K6nrojgi5ZNlmsApIArgDNKS6gTYpf+blGCY4bN01ECcnL3Ya2wfbnnX5g43OW7vsW0cMBREkXklWE1pEn20qJ6fCpPQmu0UF/lC+5jnhonNyjXveIcwMLuhRv8+cAYod3FnAcXc52UjIoBpESO2RMqoSPEp8NcNDu1fr2AqXzU0qS5yY7gMmU683DIKJgJWHAtfYWfCJAMIBcLF88VLGtR3zICvnWZRTKQcAGayBQ5YRtbT45uqfZSCGy2qr3w3LBNizs09W48npMw0THboDTL3K+4EQg9uHeOJN/Wbz+eX/Fm4cJ3HUO/oNAQhhK5vjSJQoQSrjc6hwiWC6UdCiPDvD7fKCTw8wDTkTpCdsT8ijZJeF4HCZCus+Qf7fSvGkxbGMepTE0cPBCPPSOdKTGvzw4nhDrLIeR1jZD1viGYk0+JANaZpBKGefkBCIc3ksM3Dk/x9RY+U1LB1XPlq1IYFlO/B2HFbUTzLimEzW7gX7WtILLr1IV4imSlRLXfRWAc8Gu1zAhHe54d0uB65sTvBO9H5QiCXZG0LelKKd1aqrO0Vb+yELBbFTSPYmUnIG+dAeFu/shrVyLIo2uYJs3rKmPCK+WqULRtw8+lhQV+/CnNRJTgQgAqXjn86gnZw3V6AWMX9zOiZwuT6OuzlbCsladwPmXCRahm4qgaWC63//X4sSO90SgpJZUQdcgZ+sUi5fn7aSriBkLILFMLnu3ziZ9gJgLqYqN6soJjJqGmOFD/4ofyuqqEpcKum12Y7Am8z8viGGoyFUcIBFYArc2MvYmWI8/AFTWXeAQQvYFd9n4xFzWaMNHvks46snTE9X6pup4QMUibqg48a3ZgUu3enPl6V/r3Is6EgrrTHUqsRvxp8Anv1rwKqQc9OegbHvU3ln63Kw7bmG1TUIeqTU0vZBPtI1ap2RZA4GeqwvcUi+cAEFA/LudbC8OWm2VeiX0om3eb69lKZfK4+0LRA3dDZ81yjmOfpllDe5MeMS7JSltoYU/KKDkUnvbBtFtFp5VJMumcju+daJU7V8m5vtqfhfswOnnUi6Qgf4rUOUGtU4LGMebMYa+YsnRXCdA6XygLD9iD+6XG6RTeEyUtYyxAS3QjuRPgMgMb2VXitffYZ/5rKVzzjuxJtv9RvRkXTw0r6OMClC32Swi/3ckTOS4WE/0LDJ/9HsDyPOL3V4P1ncTvU72P0JYMNznDM7053BhmrTTFROXifctefrLLcbClpv5CHvFyU0enCdDQl+trN8UirYcDXptt0zyXG/uOhEwcBqR2rtwBxqI7vEXJnhJUec+63gryPNiKRRsO6t7G0+a0LI0F/fXXXn7MmtwkZLufibBQM0qZ4RgjUpY1/DZ42mzJxjRDdV4qyUVBHDqW9jbADWX1zAUs8hZtTi4kqONlCT5U5YRR82LdDbq4/yfW6zHHpuCkqBuMZw2jvogRNDOsuaeKocfmG193kaGSw9L5r9CG3HqW0+PRNrmt0M1dgtS0Qkj/tW3I1OyZ4oezvo3QclJrrjEvEMDoFosqrNCmuj/GdJX7/UFm5lkV9UcB9kUHhZzpuoFaD+6LnRDSduIXtKxwYh5iTkKk63EmLi1mZTxQokfmUBaLvMvXmm/rylw/sQj03pCNmtWfWdp+09IBivv4L+YFCePhg2JgwJql5VMx24ggSYeZlepHU1cHkmus+Di6ynx1Oh4fKDKxJis7PKgKtH5lB6E1KcU8vsbJMtm5telFbnc7BuqgBn9SbVoW46g4gtJSDpNeiOZU/F0HU3vrNveFzACJegQL24qEQ5Tck203ez+SlNY3pJXtGRWu+NvZpf5K+PV4jzjgD5CKF0CiDmSGPC5aprVcn2xqcnIi5QaAbT68gXQkbuwC7uJQiNAMt+fL5/7iFZQtqUYkfCGftgZohbe0SA6uGkQIOyq+8xP5qiYIYMSo+Nd8Qxyo5RFkJVGNAkJGNt9qbQNke7rdRsfUBWteHlGD8o8EEm1Uba+/kpKFK7YeydjFOnfnUkQ8RiQiSpLpoQgREmfqYFhZDWhyq4x1rSmG7kZuWjCur/qYiShpcTGD77/e8erx2tW1c+t9c0mvmBi4mTJe9H5CMwpkpun3ZT4Y672be5WI5qTmlheG3pNBx+XLTazx3hfKJDJwupDf2Q3GqtptI5dE2NbeadP9keAFoh+op420QLEcMX+/5s2i9yL2mch3Si3bCJ+zcPeUInaPKlbMP7iZvFB+8pp559CQS6tQ1Xadr6WOX/PZpSWRryzCGtX1onsJOQ1AO7UqW6bN4bBmm6KNhrm9hXrOAGU4qpU4eXMnftA2gvlhAJa3KsjI8YFomZ1vMxmVqn4VgKnAOJfNR7Pi7E7o//IFxKplb5V3Xse1r7HwDveJMNrDT5SOER/LByDptBJLwgGVNN9j4LzINfA/YCFJUDgq9vWTzgp1jkiNs0KC9YspGDxuzF+YO+LFTVWuX9BEzaoZVQnc75cUnWPwwTlRqVBYgAGwei4chWfKtkocARnMTEuUnXAg9zQnOiG73uq+IooPf5DGn3rypQBTD88Cglee5BufchOIb3xY8MgZyIVpWuP9WIzhRlGoYqDRi+lizkzzPdMIdYN17uZWIHqrqMBBl0qebQrA7wByMV0PyH6wIc6u8XRJScH8JV9Ql2+LGU15Vj0uoId/9Cbv1bbcYp0vHOuTnh2XQWMBr0+A8D0nxuU+oyvvd/p1B0bxtelki5uIgcu/AQ/OoJP6dcJBJovw1cdc/6EDn6Qdnn3NBNOS1Sq0STCdtb7AEoGKWKbXO8BqhHssLEmnlv7GnWFdhJfeU/19QaEyaiMT6DLDKYH8SDI8kF9A3b6xsames2zjyy+ClGv0j8T+xdDVWa8a9Hc7fhj2FEPXj70zJRAGs2FIYoQTYmaOqNsHr3i4qGRiNRuMh18BirCpqm8RksKIZn/tB+ps7hlD+JlFI3GY5A9RVHSxS5wi8utLLq97NcVwuFlxoI64nD/J9YLer6mcKp5aNfSMaVPHQbSqPuuldB5PiDHza1EYFlFeUOO5/IcoEJmarDr6a4XOvodEYU386cMTP8fx9+drzRPOoY+rq6+Yhq95Ze0fA3HBxGIqUPCnjFDbYdev/QYFPNRHp4rMUuBHqjxLdOQnrEaD1SiNDtWNZQ1o+uAQOzj15Fej8JJhspaQqA9zsfm8fZAHvN/3N5ECAJL/Mnjm3ATnOFhg958H9GD/SDgNmZmWKCa320EeGw3TCHQuis7b5Ftv1azQ/tWJPzi6fPObrqz2mabEBI8QHVTxJXx8IlAeEkra5sCFHYgsFnIBsRvn7QM/TYtxJFB9ABKwkgM4kisvySbjnhzuItzEWefYTnNojXVNHN1xuaxjk72U0UKXShSKyTmzvwWkWJUP2lv3fGFNFc46r1+G+MLpyXFqL4hx8/Md93xk7b/wbnB/I8APgJmROV7mKrY9bndomf86MH+YymC0bwtwxkdWya29JCt2tFHvYdGFeUX3GoFs6QyxCPqzce52dz89FgVTrvC6ls9Gx5gLFfrSoORT9pq4fqx1ueJMxPAqp2QAtW57qqNtA3epW7VvhpZfuIVN8DgEqe6BMBVxgq4tkoBIAECwn9Qz+AtvYBKoPJDsZKLcn+Le8NKujJzDWTV+bDK3znlTnDy28Hu+veQ6aH+eiEYI7dPsYg87agEGYNyMwdKeJcWUc0CFEjBfT1nj34XaH8pDyNsiRLeEOLjFZLy8TbK7QE4AIzm3zYng8sAQYNOcUjIhMMwywUxgomuPMZpkkYKT1NjAVPcO2376aq3uxiqVnBPjlYQSnKIgzYd1bjkahRi0Ni+9FdRjZWQmdS0E=", "mac": "zszH13+KtyRVAhSThjIG49sqvA7oKlPOmlGJQfRbcDg="}</script>
+  <script src="../assets/js/unlock.js?v=18367c13"></script>
+
+  <footer class="site-footer">
+    <div class="container">
+      <a href="../index.html" class="footer-col-label">Shawna Kirby</a>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <ul class="footer-links">
+            <li><a href="mailto:shawna@shawnakirby.com">shawna@shawnakirby.com</a></li>
+            <li><a href="tel:+14153086495">415.308.6495</a></li>
+            <li><a href="../ShawnaKirby_Resume_2026.pdf" download="Shawna-Kirby-Résumé.pdf">Résumé</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <ul class="footer-links">
+            <li><a href="../work.html">Portfolio</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js?v=0e17470b"></script>
+  <script src="../assets/js/lightbox.js?v=f347d310"></script>
+</body>
+</html>
